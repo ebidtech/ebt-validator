@@ -17,9 +17,6 @@
   "scripts": {
     "post-install-cmd": [
       "bash ./tools/install-codesniffer.sh"
-    ],
-    "post-update-cmd": [
-      "bash ./tools/install-codesniffer.sh"
     ]
   },
   "autoload": {
