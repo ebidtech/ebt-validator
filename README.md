@@ -17,4 +17,4 @@ You can install a specific composer version by running ```COMPOSER_VERSION=1.0.0
 
 ### PHPUnit
 
-By default **composer.json** is configured to download PHPUnit. Before using PHPUnit you should edit both **phpunit.xml.dist** and change ```<TESTS_DIRECTORY>``` to your tests folder.
+By default **composer.json** is configured to download PHPUnit. Before using PHPUnit you should edit **tests/bootstrap.php** and change ```<<TEST_TOP_LEVEL_NAMESPACE>>``` to the top namespace of your test code (by default the PSR-4 standard is used).
