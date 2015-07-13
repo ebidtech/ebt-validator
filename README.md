@@ -1,20 +1,23 @@
-# PHP component bootstrap
-This projects serves as a base for PHP component projects.
+# EBT Validator
+This project provides the ```ValidatorService``` class. This class encapsulates a few common validations, allowing both **required** and **optional** validations.
 
-## Usage
+## Example
 
-1. Create a repository for your project.
-2. Clone this repository ```git clone git@github.com:ebidtech/php-component-bootstrap.git <MY_PROJECT>```.
-3. Change this repository's remote to point to your repository ```git remote set-url origin <MY_REPOSITORY_URL>```.  
+```PHP
+// Instantiate the validator.
+$validator = new EBT\Validator\Service\Validator\ValidatorService();
 
-## Setup
+// Validations return TRUE when they succeed, FALSE when they fail.
+$validator->requireString('i am a string', 'my_method', 1);              // true
+$validator->requiredInteger('i am not an integer', 'my_method', 2);      // false
 
-### Composer
+// When an exceptions class is defined, failed validations
+// THROW AN EXCEPTION instead.
+$validator->requiredPositiveInteger(1, 'my_method', 3, '\Exception');   // true
+$validator->requiredPositiveInteger(-20, 'my_method', 4, '\Exception'); // throws \Exception
 
-You can download and install composer running ```tools/install-composer.sh```. It will be installed to the repository's base directory, and can be executed with ```php composer.phar```.
-
-You can install a specific composer version by running ```COMPOSER_VERSION=1.0.0-alpha10 tools/install-composer-sh```. By editing **tools/install-composer.sh** you can fix a specific version of composer to always be downloaded for your project.
-
-### PHPUnit
-
-By default **composer.json** is configured to download PHPUnit. Before using PHPUnit you should edit **tests/bootstrap.php** and change ```<<TEST_TOP_LEVEL_NAMESPACE>>``` to the top namespace of your test code (by default the PSR-4 standard is used).
+// Required validations will fail if the value is not defined, 
+// optional validations will not.
+$validator->requiredPositiveInteger(null, 'my_method', 5);              // false;
+$validator->optionalPositiveInteger(null, 'my_method', 6);              // true;
+```
