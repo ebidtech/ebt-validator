@@ -1,8 +1,8 @@
 {
-  "name":        "<NAME>",
-  "description": "<DESCRIPTION>",
-  "license":     "<LICENSE>",
-  "homepage":    "<HOMEPAGE>",
+  "name":        "ebidtech/ebt-validator",
+  "description": "A simple validator for some PHP types",
+  "license":     "MIT",
+  "homepage":    "https://github.com/ebidtech/ebt-validator",
   "type":        "library",
   "keywords":    [],
   "require": {

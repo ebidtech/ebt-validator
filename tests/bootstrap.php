@@ -9,4 +9,4 @@ if (!file_exists($file)) {
 
 # Add test classes to the autoloader.
 $loader = require($file);
-$loader->addPsr4('<TEST_TOP_LEVEL_NAMESPACE>', __DIR__);
+$loader->addPsr4('EBT\\Validator\\Tests\\', __DIR__);
