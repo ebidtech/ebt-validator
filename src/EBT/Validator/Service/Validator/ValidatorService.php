@@ -20,7 +20,19 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredPositiveInteger() method.
+        $type = gettype($value);
+        $message = sprintf(
+            '%s() expects parameter "%s" to be positive integer, "%s" given.',
+            $callee,
+            $parameter,
+            'integer' === $type ? 'zero or negative integer' : $type
+        );
+
+        return $this->validationResponse(
+            is_int($value) && 1 <= $value,
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -28,7 +40,39 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredZeroPositiveInteger() method.
+        $type = gettype($value);
+        $message = sprintf(
+            '%s() expects parameter "%s" to be zero or positive integer, "%s" given.',
+            $callee,
+            $parameter,
+            'integer' === $type ? 'negative integer' : $type
+        );
+
+        return $this->validationResponse(
+            is_int($value) && 0 <= $value,
+            $message,
+            $exceptionClass
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
+    {
+        $type = gettype($value);
+        $message = sprintf(
+            '%s() expects parameter "%s" to be positive number, "%s" given.',
+            $callee,
+            $parameter,
+            'integer' === $type || 'double' === $type ? 'zero or negative number' : $type
+        );
+
+        return $this->validationResponse(
+            is_numeric($value) && 1 <= $value,
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -36,7 +80,19 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredZeroPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredZeroPositiveNumber() method.
+        $type = gettype($value);
+        $message = sprintf(
+            '%s() expects parameter "%s" to be zero or positive number, "%s" given.',
+            $callee,
+            $parameter,
+            'integer' === $type || 'double' === $type ? 'negative number' : $type
+        );
+
+        return $this->validationResponse(
+            is_numeric($value) && 0 <= $value,
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -44,7 +100,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredInteger($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredInteger() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be integer, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_int($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -52,7 +119,20 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredIntegerRange($value, $min, $max, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredIntegerRange() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be integer in range [%d, %d], "%d" given.',
+            $callee,
+            $parameter,
+            $min,
+            $max,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_int($value) && $min <= $value && $max >= $value,
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -60,7 +140,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredBool($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredBool() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be boolean, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_bool($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -68,7 +159,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredFloat($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredFloat() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be float, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_float($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -76,7 +178,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredScalar($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredScalar() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be scalar, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_scalar($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -84,7 +197,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredArray($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredArray() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be array, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_array($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -92,15 +216,19 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredArrayNotEmpty($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredArrayNotEmpty() method.
-    }
+        $type = 'array' === gettype($value) ? 'empty array' : gettype($value);
+        $message = sprintf(
+            '%s() expects parameter "%s" to be array not empty, "%s" given.',
+            $callee,
+            $parameter,
+            $type
+        );
 
-    /**
-     * {@inheritdoc}
-     */
-    public function requiredArrayValuesType(array $values, $type, $callee, $parameter, $exceptionClass)
-    {
-        // TODO: Implement requiredArrayValuesType() method.
+        return $this->validationResponse(
+            is_array($value) && array() !== $value,
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -108,7 +236,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredString($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredString() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be string, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_string($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -116,7 +255,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredStringNotEmpty($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredStringNotEmpty() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be string not empty, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_string($value) && ! empty($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -124,7 +274,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredNotEmpty($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredNotEmpty() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be not empty, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            ! empty($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -132,7 +293,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredObject($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredObject() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be object, "%s" given.',
+            $callee,
+            $parameter,
+            gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_object($value),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -140,7 +312,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredUrl($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredUrl() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be URL, "%s" given.',
+            $callee,
+            $parameter,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_string($value) && false !== filter_var($value, FILTER_VALIDATE_URL),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -148,7 +331,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredEmail($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredEmail() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be email, "%s" given.',
+            $callee,
+            $parameter,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_string($value) && false !== filter_var($value, FILTER_VALIDATE_EMAIL),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -156,7 +350,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredIpAddress($value, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredIpAddress() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be IP address, "%s" given.',
+            $callee,
+            $parameter,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationResponse(
+            is_string($value) && false !== filter_var($value, FILTER_VALIDATE_IP),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -164,7 +369,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredKeyExists($key, array $values, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredKeyExists() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to contain key "%s" on array.',
+            $callee,
+            $parameter,
+            $key
+        );
+
+        return $this->validationResponse(
+            array_key_exists($key, $values),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -172,7 +388,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredValueExists($value, array $values, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredValueExists() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to contain value "%s" on array.',
+            $callee,
+            $parameter,
+            $value
+        );
+
+        return $this->validationResponse(
+            in_array($value, $values),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -180,7 +407,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredCustom($condition, $partialMessage, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredCustom() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to pass custom require: %s.',
+            $callee,
+            $parameter,
+            $partialMessage
+        );
+
+        return $this->validationResponse(
+            $condition,
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -188,7 +426,18 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredExistingClass($className, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredExistingClass() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be existing class name, "%s" given.',
+            $callee,
+            $parameter,
+            $className
+        );
+
+        return $this->validationResponse(
+            class_exists($className),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -196,7 +445,19 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function requiredExistingMethod($object, $methodName, $callee, $parameter, $exceptionClass = null)
     {
-        // TODO: Implement requiredExistingMethod() method.
+        $message = sprintf(
+            '%s() expects parameter "%s" to be a existing method for class "%s", "%s" given.',
+            $callee,
+            $parameter,
+            is_object($object) ? get_class($object) : sprintf('<NOT AN OBJECT: %s>', gettype($object)),
+            $methodName
+        );
+
+        return $this->validationResponse(
+            is_object($object) && method_exists($object, $methodName),
+            $message,
+            $exceptionClass
+        );
     }
 
     /**
@@ -225,6 +486,20 @@ class ValidatorService implements ValidatorServiceInterface
         }
 
         return $this->requiredZeroPositiveInteger($value, $callee, $parameter, $exceptionClass);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function optionalPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
+    {
+        /* No additional validations when the value is null. */
+        if (null === $value) {
+
+            return true;
+        }
+
+        return $this->optionalPositiveNumber($value, $callee, $parameter, $exceptionClass);
     }
 
     /**
@@ -463,5 +738,26 @@ class ValidatorService implements ValidatorServiceInterface
         }
 
         return $this->requiredValueExists($value, $values, $callee, $parameter, $exceptionClass);
+    }
+
+    /**
+     * Generates the appropriate response for a validation.
+     *
+     * @param boolean     $validationResult
+     * @param string      $message
+     * @param string|null $exceptionClass
+     *
+     * @returns boolean
+     *
+     * @throws \Exception
+     */
+    protected function validationResponse($validationResult, $message, $exceptionClass)
+    {
+        if (true === $validationResult || null === $exceptionClass) {
+
+            return $validationResult;
+        }
+
+        throw new $exceptionClass($message);
     }
 }

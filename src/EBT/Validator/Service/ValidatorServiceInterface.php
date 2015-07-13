@@ -42,6 +42,20 @@ interface ValidatorServiceInterface
     public function requiredZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null);
 
     /**
+     * Required value is a positive number.
+     *
+     * @param mixed          $value          Value.
+     * @param string         $callee         Method name of the caller.
+     * @param integer|string $parameter      Parameter position/name.
+     * @param string|null    $exceptionClass Exception class name.
+     *
+     * @returns boolean
+     *
+     * @throws \Exception
+     */
+    public function requiredPositiveNumber($value, $callee, $parameter, $exceptionClass = null);
+
+    /**
      * Required value is zero or positive number.
      *
      * @param mixed          $value          Value.
@@ -154,23 +168,6 @@ interface ValidatorServiceInterface
      * @throws \Exception
      */
     public function requiredArrayNotEmpty($value, $callee, $parameter, $exceptionClass = null);
-
-    /**
-     * Require all values of array be of a given type.
-     *
-     * {@see ArrayUtil::valuesType()}
-     *
-     * @param array          $values         Value.
-     * @param string         $type           Type to check against.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
-     *
-     * @returns boolean
-     *
-     * @throws \Exception
-     */
-    public function requiredArrayValuesType(array $values, $type, $callee, $parameter, $exceptionClass);
 
     /**
      * Required value is string.
@@ -371,6 +368,20 @@ interface ValidatorServiceInterface
      * @throws \Exception
      */
     public function optionalZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null);
+
+    /**
+     * Optional value is a positive number.
+     *
+     * @param mixed          $value          Value.
+     * @param string         $callee         Method name of the caller.
+     * @param integer|string $parameter      Parameter position/name.
+     * @param string|null    $exceptionClass Exception class name.
+     *
+     * @returns boolean
+     *
+     * @throws \Exception
+     */
+    public function optionalPositiveNumber($value, $callee, $parameter, $exceptionClass = null);
 
     /**
      * Optional value is zero or positive number.
