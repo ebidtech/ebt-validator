@@ -16,6 +16,11 @@ use EBT\Validator\Service\ValidatorServiceInterface;
 class ValidatorService implements ValidatorServiceInterface
 {
     /**
+     * @var string
+     */
+    protected $lastError;
+
+    /**
      * {@inheritdoc}
      */
     public function requiredPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
@@ -741,6 +746,15 @@ class ValidatorService implements ValidatorServiceInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getLastError()
+    {
+        return $this->getLastError();
+    }
+
+
+    /**
      * Generates the appropriate response for a validation.
      *
      * @param boolean     $validationResult
@@ -753,11 +767,21 @@ class ValidatorService implements ValidatorServiceInterface
      */
     protected function validationResponse($validationResult, $message, $exceptionClass)
     {
-        if (true === $validationResult || null === $exceptionClass) {
+        /* Clear the last error message. */
+        $this->lastError = null;
 
-            return $validationResult;
+        /* Set a new error message in case of validation error. */
+        if (false === $validationResult) {
+            $this->lastError = $message;
         }
 
-        throw new $exceptionClass($message);
+        /* If an exception class was defined the correct exception must be thrown. */
+        if (null !== $exceptionClass) {
+
+            throw new $exceptionClass($message);
+        }
+
+        /* No exception, just return the result of the validation as a boolean. */
+        return $validationResult;
     }
 }

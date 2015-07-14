@@ -624,4 +624,11 @@ interface ValidatorServiceInterface
      * @throws \Exception
      */
     public function optionalValueExists($value, array $values, $callee, $parameter, $exceptionClass = null);
+
+    /**
+     * Retrieves the last validation error, or null if the last validation was successful.
+     *
+     * @return string|null
+     */
+    public function getLastError();
 }
