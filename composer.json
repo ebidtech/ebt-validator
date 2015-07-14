@@ -1,6 +1,6 @@
 {
   "name":        "ebidtech/ebt-validator",
-  "description": "A simple validator for some PHP types",
+  "description": "A simple service that provides common PHP validations",
   "license":     "MIT",
   "homepage":    "https://github.com/ebidtech/ebt-validator",
   "type":        "library",
