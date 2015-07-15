@@ -750,7 +750,7 @@ class ValidatorService implements ValidatorServiceInterface
      */
     public function getLastError()
     {
-        return $this->getLastError();
+        return $this->lastError;
     }
 
 
