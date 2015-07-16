@@ -11,7 +11,7 @@
 
 namespace EBT\Validator\Model\Validator;
 
-class Validator
+abstract class Validator
 {
     /**
      * Required value is zero or positive integer.
@@ -111,6 +111,18 @@ class Validator
     public static function requiredFloat($value)
     {
         return is_float($value);
+    }
+
+    /**
+     * Required value is double.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public static function requiredDouble($value)
+    {
+        return is_double($value);
     }
 
     /**
@@ -329,7 +341,7 @@ class Validator
             return true;
         }
 
-        return self::optionalZeroPositiveInteger($value);
+        return self::requiredZeroPositiveInteger($value);
     }
 
     /**
@@ -347,7 +359,7 @@ class Validator
             return true;
         }
 
-        return self::optionalPositiveNumber($value);
+        return self::requiredPositiveNumber($value);
     }
 
     /**
@@ -365,7 +377,7 @@ class Validator
             return true;
         }
 
-        return self::optionalZeroPositiveNumber($value);
+        return self::requiredZeroPositiveNumber($value);
     }
 
     /**
@@ -383,7 +395,7 @@ class Validator
             return true;
         }
 
-        return self::optionalInteger($value);
+        return self::requiredInteger($value);
     }
 
     /**
@@ -403,7 +415,7 @@ class Validator
             return true;
         }
 
-        return self::optionalIntegerRange($value, $min, $max);
+        return self::requiredIntegerRange($value, $min, $max);
     }
 
     /**
@@ -423,7 +435,7 @@ class Validator
             return true;
         }
 
-        return self::optionalNumberRange($value, $min, $max);
+        return self::requiredNumberRange($value, $min, $max);
     }
 
     /**
@@ -441,7 +453,7 @@ class Validator
             return true;
         }
 
-        return self::optionalBool($value);
+        return self::requiredBool($value);
     }
 
     /**
@@ -459,7 +471,25 @@ class Validator
             return true;
         }
 
-        return self::optionalFloat($value);
+        return self::requiredFloat($value);
+    }
+
+    /**
+     * Optional value is double.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public static function optionalDouble($value)
+    {
+        /* No additional validations when the value is null. */
+        if (null === $value) {
+
+            return true;
+        }
+
+        return self::requiredDouble($value);
     }
 
     /**
@@ -477,7 +507,7 @@ class Validator
             return true;
         }
 
-        return self::optionalScalar($value);
+        return self::requiredScalar($value);
     }
 
     /**
@@ -495,7 +525,7 @@ class Validator
             return true;
         }
 
-        return self::optionalArray($value);
+        return self::requiredArray($value);
     }
 
     /**
@@ -513,7 +543,7 @@ class Validator
             return true;
         }
 
-        return self::optionalArrayNotEmpty($value);
+        return self::requiredArrayNotEmpty($value);
     }
 
     /**
@@ -531,7 +561,7 @@ class Validator
             return true;
         }
 
-        return self::optionalString($value);
+        return self::requiredString($value);
     }
 
     /**
@@ -549,7 +579,7 @@ class Validator
             return true;
         }
 
-        return self::optionalStringNotEmpty($value);
+        return self::requiredStringNotEmpty($value);
     }
 
     /**
@@ -567,7 +597,7 @@ class Validator
             return true;
         }
 
-        return self::optionalNotEmpty($value);
+        return self::requiredNotEmpty($value);
     }
 
     /**
@@ -585,7 +615,7 @@ class Validator
             return true;
         }
 
-        return self::optionalObject($value);
+        return self::requiredObject($value);
     }
 
     /**
@@ -603,7 +633,7 @@ class Validator
             return true;
         }
 
-        return self::optionalUrl($value);
+        return self::requiredUrl($value);
     }
 
     /**
@@ -621,7 +651,7 @@ class Validator
             return true;
         }
 
-        return self::optionalEmail($value);
+        return self::requiredEmail($value);
     }
 
     /**
@@ -639,7 +669,7 @@ class Validator
             return true;
         }
 
-        return self::optionalIpAddress($value);
+        return self::requiredIpAddress($value);
     }
 
     /**
@@ -658,7 +688,7 @@ class Validator
             return true;
         }
 
-        return self::optionalKeyExists($key, $values);
+        return self::requiredKeyExists($key, $values);
     }
 
     /**
@@ -677,6 +707,6 @@ class Validator
             return true;
         }
 
-        return self::optionalValueExists($value, $values);
+        return self::requiredValueExists($value, $values);
     }
 }

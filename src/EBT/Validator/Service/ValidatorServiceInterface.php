@@ -14,616 +14,431 @@ namespace EBT\Validator\Service;
 interface ValidatorServiceInterface
 {
     /**
-     * Required value is a positive integer.
-     *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
-     *
-     * @returns boolean
-     *
-     * @throws \Exception
-     */
-    public function requiredPositiveInteger($value, $callee, $parameter, $exceptionClass = null);
-
-    /**
      * Required value is zero or positive integer.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredZeroPositiveInteger($value);
 
     /**
      * Required value is a positive number.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredPositiveNumber($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredPositiveNumber($value);
 
     /**
      * Required value is zero or positive number.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredZeroPositiveNumber($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredZeroPositiveNumber($value);
 
     /**
      * Required value is integer.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredInteger($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredInteger($value);
 
     /**
      * Required value is integer in range.
      *
-     * @param mixed          $value          Value.
-     * @param integer        $min            Lower limit.
-     * @param integer        $max            Upper limit.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed   $value Value.
+     * @param integer $min   Lower limit.
+     * @param integer $max   Upper limit.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredIntegerRange($value, $min, $max, $callee, $parameter, $exceptionClass = null);
+    public function requiredIntegerRange($value, $min, $max);
+
+    /**
+     * Required value is number in range.
+     *
+     * @param mixed   $value Value.
+     * @param integer $min   Lower limit.
+     * @param integer $max   Upper limit.
+     *
+     * @return boolean
+     */
+    public function requiredNumberRange($value, $min, $max);
 
     /**
      * Required value is boolean.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredBool($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredBool($value);
 
     /**
      * Required value is float.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredFloat($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredFloat($value);
+
+    /**
+     * Required value is double.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public function requiredDouble($value);
 
     /**
      * Require value is scalar.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredScalar($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredScalar($value);
 
     /**
      * Required value is array.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredArray($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredArray($value);
 
     /**
      * Required value is array and not empty.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredArrayNotEmpty($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredArrayNotEmpty($value);
 
     /**
      * Required value is string.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredString($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredString($value);
 
     /**
      * Required value is string not empty.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredStringNotEmpty($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredStringNotEmpty($value);
 
     /**
      * Required value against empty.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredNotEmpty($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredNotEmpty($value);
 
     /**
      * Required value is an object.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredObject($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredObject($value);
 
     /**
      * Required values in an URL.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredUrl($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredUrl($value);
 
     /**
      * Required value is an email.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredEmail($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredEmail($value);
 
     /**
      * Required value is an IP address.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredIpAddress($value, $callee, $parameter, $exceptionClass = null);
+    public function requiredIpAddress($value);
 
     /**
      * Required key exists.
      *
-     * @param string         $key            Key to check.
-     * @param array          $values         Array in which to search.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param string $key    Key to check.
+     * @param array  $values Array in which to search.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredKeyExists($key, array $values, $callee, $parameter, $exceptionClass = null);
+    public function requiredKeyExists($key, array $values);
 
     /**
      * Required value exists (in array).
      *
-     * @param mixed          $value          Value to search for.
-     * @param array          $values         Array in which to search.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value  Value to search for.
+     * @param array $values Array in which to search.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredValueExists($value, array $values, $callee, $parameter, $exceptionClass = null);
-
-    /**
-     * Required custom.
-     *
-     * @param mixed          $condition      Conditional check result.
-     * @param string         $partialMessage Partial message to be shown with the error.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
-     *
-     * @returns boolean
-     *
-     * @throws \Exception
-     */
-    public function requiredCustom($condition, $partialMessage, $callee, $parameter, $exceptionClass = null);
+    public function requiredValueExists($value, array $values);
 
     /**
      * Check if a given class name exists.
      *
-     * @param string         $className      Class name to check.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param string $className Class name to check.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredExistingClass($className, $callee, $parameter, $exceptionClass = null);
+    public function requiredExistingClass($className);
 
     /**
      * Check if a given method name exists for a given class.
      *
-     * @param object         $object         Object from class to be checked.
-     * @param string         $methodName     Name of the method to check for.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param object $object     Object from class to be checked.
+     * @param string $methodName Name of the method to check for.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function requiredExistingMethod($object, $methodName, $callee, $parameter, $exceptionClass = null);
+    public function requiredExistingMethod($object, $methodName);
 
     /**
      * Optional value is a positive integer.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalPositiveInteger($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalPositiveInteger($value);
+
+    /**
+     * Required value is a positive integer.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public function requiredPositiveInteger($value);
 
     /**
      * Optional value is zero or positive integer.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalZeroPositiveInteger($value);
 
     /**
      * Optional value is a positive number.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalPositiveNumber($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalPositiveNumber($value);
 
     /**
      * Optional value is zero or positive number.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalZeroPositiveNumber($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalZeroPositiveNumber($value);
 
     /**
      * Optional value is integer.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalInteger($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalInteger($value);
 
     /**
      * Optional value is integer in range.
      *
-     * @param mixed          $value          Value.
-     * @param integer        $min            Lower limit.
-     * @param integer        $max            Upper limit.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed   $value Value.
+     * @param integer $min   Lower limit.
+     * @param integer $max   Upper limit.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalIntegerRange($value, $min, $max, $callee, $parameter, $exceptionClass = null);
+    public function optionalIntegerRange($value, $min, $max);
+
+    /**
+     * Optional value is number in range.
+     *
+     * @param mixed   $value Value.
+     * @param integer $min   Lower limit.
+     * @param integer $max   Upper limit.
+     *
+     * @return boolean
+     */
+    public function optionalNumberRange($value, $min, $max);
 
     /**
      * Optional value is boolean.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalBool($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalBool($value);
 
     /**
      * Optional value is float.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalFloat($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalFloat($value);
+
+    /**
+     * Optional value is double.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public function optionalDouble($value);
 
     /**
      * Optional value is scalar.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalScalar($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalScalar($value);
 
     /**
      * Optional value is array.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalArray($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalArray($value);
 
     /**
      * Optional value is array and not empty.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalArrayNotEmpty($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalArrayNotEmpty($value);
 
     /**
      * Optional value is string.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalString($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalString($value);
 
     /**
      * Optional value is string not empty.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalStringNotEmpty($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalStringNotEmpty($value);
 
     /**
      * Optional value against empty.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalNotEmpty($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalNotEmpty($value);
 
     /**
      * Optional value is an object.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalObject($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalObject($value);
 
     /**
      * Optional values in an URL.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalUrl($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalUrl($value);
 
     /**
      * Optional value is an email.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalEmail($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalEmail($value);
 
     /**
      * Optional value is an IP address.
      *
-     * @param mixed          $value          Value.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value Value.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalIpAddress($value, $callee, $parameter, $exceptionClass = null);
+    public function optionalIpAddress($value);
 
     /**
      * Optional key exists.
      *
-     * @param string         $key            Key to check.
-     * @param array          $values         Array in which to search.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param string $key    Key to check.
+     * @param array  $values Array in which to search.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalKeyExists($key, array $values, $callee, $parameter, $exceptionClass = null);
+    public function optionalKeyExists($key, array $values);
 
     /**
      * Optional value exists (in array).
      *
-     * @param mixed          $value          Value to search for.
-     * @param array          $values         Array in which to search.
-     * @param string         $callee         Method name of the caller.
-     * @param integer|string $parameter      Parameter position/name.
-     * @param string|null    $exceptionClass Exception class name.
+     * @param mixed $value  Value to search for.
+     * @param array $values Array in which to search.
      *
-     * @returns boolean
-     *
-     * @throws \Exception
+     * @return boolean
      */
-    public function optionalValueExists($value, array $values, $callee, $parameter, $exceptionClass = null);
+    public function optionalValueExists($value, array $values);
 
     /**
      * Retrieves the last validation error, or null if the last validation was successful.

@@ -11,6 +11,7 @@
 
 namespace EBT\Validator\Service\Validator;
 
+use EBT\Validator\Model\Validator\Validator;
 use EBT\Validator\Service\ValidatorServiceInterface;
 
 class ValidatorService implements ValidatorServiceInterface
@@ -21,767 +22,415 @@ class ValidatorService implements ValidatorServiceInterface
     protected $lastError;
 
     /**
-     * {@inheritdoc}
+     * {{@inheritDoc}}
      */
-    public function requiredPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredZeroPositiveInteger($value)
     {
         $type = gettype($value);
         $message = sprintf(
-            '%s() expects parameter "%s" to be positive integer, "%s" given.',
-            $callee,
-            $parameter,
-            'integer' === $type ? 'zero or negative integer' : $type
+            'Expected positive integer, "%s" given.',
+            ('integer' === $type) ? 'zero or negative integer' : $type
         );
 
         return $this->validationResponse(
-            is_int($value) && 1 <= $value,
-            $message,
-            $exceptionClass
+            Validator::requiredZeroPositiveInteger($value),
+            $message
         );
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredPositiveNumber($value)
     {
-        $type = gettype($value);
-        $message = sprintf(
-            '%s() expects parameter "%s" to be zero or positive integer, "%s" given.',
-            $callee,
-            $parameter,
-            'integer' === $type ? 'negative integer' : $type
-        );
-
-        return $this->validationResponse(
-            is_int($value) && 0 <= $value,
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredPositiveNumber() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredZeroPositiveNumber($value)
     {
-        $type = gettype($value);
-        $message = sprintf(
-            '%s() expects parameter "%s" to be positive number, "%s" given.',
-            $callee,
-            $parameter,
-            'integer' === $type || 'double' === $type ? 'zero or negative number' : $type
-        );
-
-        return $this->validationResponse(
-            is_numeric($value) && 1 <= $value,
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredZeroPositiveNumber() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredZeroPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredInteger($value)
     {
-        $type = gettype($value);
-        $message = sprintf(
-            '%s() expects parameter "%s" to be zero or positive number, "%s" given.',
-            $callee,
-            $parameter,
-            'integer' === $type || 'double' === $type ? 'negative number' : $type
-        );
-
-        return $this->validationResponse(
-            is_numeric($value) && 0 <= $value,
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredInteger() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredInteger($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredIntegerRange($value, $min, $max)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be integer, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_int($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredIntegerRange() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredIntegerRange($value, $min, $max, $callee, $parameter, $exceptionClass = null)
+    public function requiredNumberRange($value, $min, $max)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be integer in range [%d, %d], "%d" given.',
-            $callee,
-            $parameter,
-            $min,
-            $max,
-            is_scalar($value) ? $value : gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_int($value) && $min <= $value && $max >= $value,
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredNumberRange() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredBool($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredBool($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be boolean, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_bool($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredBool() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredFloat($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredFloat($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be float, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_float($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredFloat() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredScalar($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredDouble($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be scalar, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_scalar($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredDouble() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredArray($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredScalar($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be array, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_array($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredScalar() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredArrayNotEmpty($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredArray($value)
     {
-        $type = 'array' === gettype($value) ? 'empty array' : gettype($value);
-        $message = sprintf(
-            '%s() expects parameter "%s" to be array not empty, "%s" given.',
-            $callee,
-            $parameter,
-            $type
-        );
-
-        return $this->validationResponse(
-            is_array($value) && array() !== $value,
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredArray() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredString($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredArrayNotEmpty($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be string, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_string($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredArrayNotEmpty() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredStringNotEmpty($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredString($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be string not empty, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_string($value) && ! empty($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredString() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredNotEmpty($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredStringNotEmpty($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be not empty, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            ! empty($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredStringNotEmpty() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredObject($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredNotEmpty($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be object, "%s" given.',
-            $callee,
-            $parameter,
-            gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_object($value),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredNotEmpty() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredUrl($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredObject($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be URL, "%s" given.',
-            $callee,
-            $parameter,
-            is_scalar($value) ? $value : gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_string($value) && false !== filter_var($value, FILTER_VALIDATE_URL),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredObject() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredEmail($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredUrl($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be email, "%s" given.',
-            $callee,
-            $parameter,
-            is_scalar($value) ? $value : gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_string($value) && false !== filter_var($value, FILTER_VALIDATE_EMAIL),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredUrl() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredIpAddress($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredEmail($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be IP address, "%s" given.',
-            $callee,
-            $parameter,
-            is_scalar($value) ? $value : gettype($value)
-        );
-
-        return $this->validationResponse(
-            is_string($value) && false !== filter_var($value, FILTER_VALIDATE_IP),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredEmail() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredKeyExists($key, array $values, $callee, $parameter, $exceptionClass = null)
+    public function requiredIpAddress($value)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to contain key "%s" on array.',
-            $callee,
-            $parameter,
-            $key
-        );
-
-        return $this->validationResponse(
-            array_key_exists($key, $values),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredIpAddress() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredValueExists($value, array $values, $callee, $parameter, $exceptionClass = null)
+    public function requiredKeyExists($key, array $values)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to contain value "%s" on array.',
-            $callee,
-            $parameter,
-            $value
-        );
-
-        return $this->validationResponse(
-            in_array($value, $values),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredKeyExists() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredCustom($condition, $partialMessage, $callee, $parameter, $exceptionClass = null)
+    public function requiredValueExists($value, array $values)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to pass custom require: %s.',
-            $callee,
-            $parameter,
-            $partialMessage
-        );
-
-        return $this->validationResponse(
-            $condition,
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredValueExists() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredExistingClass($className, $callee, $parameter, $exceptionClass = null)
+    public function requiredExistingClass($className)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be existing class name, "%s" given.',
-            $callee,
-            $parameter,
-            $className
-        );
-
-        return $this->validationResponse(
-            class_exists($className),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredExistingClass() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function requiredExistingMethod($object, $methodName, $callee, $parameter, $exceptionClass = null)
+    public function requiredExistingMethod($object, $methodName)
     {
-        $message = sprintf(
-            '%s() expects parameter "%s" to be a existing method for class "%s", "%s" given.',
-            $callee,
-            $parameter,
-            is_object($object) ? get_class($object) : sprintf('<NOT AN OBJECT: %s>', gettype($object)),
-            $methodName
-        );
-
-        return $this->validationResponse(
-            is_object($object) && method_exists($object, $methodName),
-            $message,
-            $exceptionClass
-        );
+        // TODO: Implement requiredExistingMethod() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalPositiveInteger($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredPositiveInteger($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalPositiveInteger() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalZeroPositiveInteger($value, $callee, $parameter, $exceptionClass = null)
+    public function requiredPositiveInteger($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredZeroPositiveInteger($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement requiredPositiveInteger() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalZeroPositiveInteger($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->optionalPositiveNumber($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalZeroPositiveInteger() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalZeroPositiveNumber($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalPositiveNumber($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredZeroPositiveNumber($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalPositiveNumber() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalInteger($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalZeroPositiveNumber($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredInteger($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalZeroPositiveNumber() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalIntegerRange($value, $min, $max, $callee, $parameter, $exceptionClass = null)
+    public function optionalInteger($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredIntegerRange($value, $min, $max, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalInteger() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalBool($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalIntegerRange($value, $min, $max)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredBool($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalIntegerRange() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalFloat($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalNumberRange($value, $min, $max)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredFloat($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalNumberRange() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalScalar($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalBool($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredScalar($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalBool() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalArray($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalFloat($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredArray($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalFloat() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalArrayNotEmpty($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalDouble($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredArrayNotEmpty($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalDouble() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalString($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalScalar($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredString($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalScalar() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalStringNotEmpty($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalArray($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredStringNotEmpty($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalArray() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalNotEmpty($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalArrayNotEmpty($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredNotEmpty($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalArrayNotEmpty() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalObject($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalString($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredObject($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalString() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalUrl($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalStringNotEmpty($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredUrl($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalStringNotEmpty() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalEmail($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalNotEmpty($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredEmail($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalNotEmpty() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalIpAddress($value, $callee, $parameter, $exceptionClass = null)
+    public function optionalObject($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredIpAddress($value, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalObject() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalKeyExists($key, array $values, $callee, $parameter, $exceptionClass = null)
+    public function optionalUrl($value)
     {
-        /* No additional validations when the key is null. */
-        if (null === $key) {
-
-            return true;
-        }
-
-        return $this->requiredKeyExists($key, $values, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalUrl() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function optionalValueExists($value, array $values, $callee, $parameter, $exceptionClass = null)
+    public function optionalEmail($value)
     {
-        /* No additional validations when the value is null. */
-        if (null === $value) {
-
-            return true;
-        }
-
-        return $this->requiredValueExists($value, $values, $callee, $parameter, $exceptionClass);
+        // TODO: Implement optionalEmail() method.
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     */
+    public function optionalIpAddress($value)
+    {
+        // TODO: Implement optionalIpAddress() method.
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function optionalKeyExists($key, array $values)
+    {
+        // TODO: Implement optionalKeyExists() method.
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function optionalValueExists($value, array $values)
+    {
+        // TODO: Implement optionalValueExists() method.
+    }
+
+    /**
+     * {{@inheritDoc}}
      */
     public function getLastError()
     {
         return $this->lastError;
     }
 
+    /**
+     * Sets the last validation error.
+     *
+     * @param string|null $error
+     */
+    protected function setLastError($error = null)
+    {
+        $this->lastError = $error;
+    }
 
     /**
      * Generates the appropriate response for a validation.
      *
      * @param boolean     $validationResult
      * @param string      $message
-     * @param string|null $exceptionClass
      *
      * @returns boolean
-     *
-     * @throws \Exception
      */
-    protected function validationResponse($validationResult, $message, $exceptionClass)
+    protected function validationResponse($validationResult, $message)
     {
-        /* Clear the last error message. */
-        $this->lastError = null;
+        /* Set the error message. */
+        $this->lastError = (false === $validationResult)
+            ? $message
+            : null;
 
-        /* Set a new error message in case of validation error. */
-        if (false === $validationResult) {
-            $this->lastError = $message;
-        }
-
-        /* If an exception class was defined the correct exception must be thrown. */
-        if (null !== $exceptionClass) {
-
-            throw new $exceptionClass($message);
-        }
-
-        /* No exception, just return the result of the validation as a boolean. */
         return $validationResult;
     }
 }
