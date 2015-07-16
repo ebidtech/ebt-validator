@@ -11,6 +11,7 @@
 
 namespace EBT\Validator\Service\Validator;
 
+use EBT\Validator\Exception\ValidationException;
 use EBT\Validator\Model\Validator\Validator;
 use EBT\Validator\Service\ValidatorServiceInterface;
 
@@ -20,6 +21,20 @@ class ValidatorService implements ValidatorServiceInterface
      * @var string
      */
     protected $lastError;
+
+    /**
+     * @var boolean
+     */
+    protected $exceptionEnabled;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->lastError        = null;
+        $this->exceptionEnabled = false;
+    }
 
     /**
      * {@inheritDoc}
@@ -41,7 +56,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type) ? 'zero or negative integer' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -64,7 +79,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type) ? 'negative integer' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -87,7 +102,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -110,7 +125,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type || 'double' === $type) ? 'negative number' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -132,7 +147,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -156,7 +171,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -180,7 +195,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -202,7 +217,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -224,7 +239,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -246,7 +261,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -268,7 +283,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -290,7 +305,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -313,7 +328,7 @@ class ValidatorService implements ValidatorServiceInterface
             $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -335,7 +350,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -357,7 +372,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -379,7 +394,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -401,7 +416,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -423,7 +438,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -445,7 +460,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -467,7 +482,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -489,7 +504,7 @@ class ValidatorService implements ValidatorServiceInterface
             $key
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -511,7 +526,7 @@ class ValidatorService implements ValidatorServiceInterface
             $value
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -533,7 +548,7 @@ class ValidatorService implements ValidatorServiceInterface
             $className
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -556,7 +571,7 @@ class ValidatorService implements ValidatorServiceInterface
             $methodName
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -579,7 +594,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type) ? 'zero or negative integer' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -602,7 +617,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type) ? 'negative integer' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -625,7 +640,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -648,7 +663,7 @@ class ValidatorService implements ValidatorServiceInterface
             ('integer' === $type || 'double' === $type) ? 'negative number' : $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -670,7 +685,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -694,7 +709,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -718,7 +733,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -740,7 +755,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -762,7 +777,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -784,7 +799,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -806,7 +821,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -828,7 +843,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -851,7 +866,7 @@ class ValidatorService implements ValidatorServiceInterface
             $type
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -873,7 +888,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -895,7 +910,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -917,7 +932,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -939,7 +954,7 @@ class ValidatorService implements ValidatorServiceInterface
             gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -961,7 +976,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -983,7 +998,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -1005,7 +1020,7 @@ class ValidatorService implements ValidatorServiceInterface
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -1027,7 +1042,7 @@ class ValidatorService implements ValidatorServiceInterface
             $key
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -1049,7 +1064,7 @@ class ValidatorService implements ValidatorServiceInterface
             $value
         );
 
-        return false;
+        return $this->validationFailed();
     }
 
     /**
@@ -1058,5 +1073,47 @@ class ValidatorService implements ValidatorServiceInterface
     public function getLastError()
     {
         return $this->lastError;
+    }
+
+    /**
+     * Enables exceptions on failed validations.
+     *
+     * @return ValidatorService
+     */
+    public function enableExceptions()
+    {
+        $this->exceptionEnabled = true;
+
+        return $this;
+    }
+
+    /**
+     * Disables exceptions on failed validations.
+     *
+     * @return ValidatorService
+     */
+    public function disableExceptions()
+    {
+        $this->exceptionEnabled = false;
+
+        return $this;
+    }
+
+    /**
+     * Sets the error message and returns false or throws an exception, as needed.
+     *
+     * @return boolean
+     *
+     * @throws ValidationException
+     */
+    protected function validationFailed()
+    {
+        /* Throws an exception if they are enabled, or just return false. */
+        if ($this->exceptionEnabled) {
+
+            throw new ValidationException($this->lastError);
+        }
+
+        return false;
     }
 }
