@@ -441,9 +441,9 @@ interface ValidatorServiceInterface
     public function optionalValueExists($value, array $values);
 
     /**
-     * Retrieves the last validation error, or null if the last validation was successful.
+     * Retrieves the last validation error.
      *
-     * @return string|null
+     * @return string
      */
     public function getLastError();
 }
