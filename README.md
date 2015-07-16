@@ -43,7 +43,7 @@ $validator->requiredInteger('not an integer'); // false
 // It is possible to retrieve the message for the last
 // failed validation.
 $validator->requireString(5);                  // false
-$validator->getLastError();                    // ...expected string...
+$validator->getLastError();                    // Expected string, "integer" given.
 
 // Required validations will fail if the value is not defined, 
 // optional validations will not.
