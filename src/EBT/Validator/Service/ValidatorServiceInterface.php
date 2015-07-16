@@ -11,6 +11,8 @@
 
 namespace EBT\Validator\Service;
 
+use EBT\Validator\Exception\ValidationException;
+
 interface ValidatorServiceInterface
 {
     /**
@@ -19,6 +21,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredNotNull($value);
 
@@ -28,6 +32,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredPositiveInteger($value);
 
@@ -37,6 +43,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredZeroPositiveInteger($value);
 
@@ -46,6 +54,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredPositiveNumber($value);
 
@@ -55,6 +65,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredZeroPositiveNumber($value);
 
@@ -64,6 +76,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredInteger($value);
 
@@ -75,6 +89,8 @@ interface ValidatorServiceInterface
      * @param integer $max   Upper limit.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredIntegerRange($value, $min, $max);
 
@@ -86,6 +102,8 @@ interface ValidatorServiceInterface
      * @param integer $max   Upper limit.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredNumberRange($value, $min, $max);
 
@@ -95,6 +113,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredBool($value);
 
@@ -104,6 +124,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredFloat($value);
 
@@ -113,6 +135,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredDouble($value);
 
@@ -122,6 +146,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredScalar($value);
 
@@ -131,6 +157,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredArray($value);
 
@@ -140,6 +168,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredArrayNotEmpty($value);
 
@@ -149,6 +179,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredString($value);
 
@@ -158,6 +190,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredStringNotEmpty($value);
 
@@ -167,6 +201,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredNotEmpty($value);
 
@@ -176,6 +212,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredObject($value);
 
@@ -185,6 +223,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredUrl($value);
 
@@ -194,6 +234,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredEmail($value);
 
@@ -203,6 +245,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredIpAddress($value);
 
@@ -213,6 +257,8 @@ interface ValidatorServiceInterface
      * @param array  $values Array in which to search.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredExistingKey($key, array $values);
 
@@ -223,6 +269,8 @@ interface ValidatorServiceInterface
      * @param array $values Array in which to search.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredExistingValue($value, array $values);
 
@@ -232,6 +280,8 @@ interface ValidatorServiceInterface
      * @param string $className Class name to check.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredExistingClass($className);
 
@@ -242,6 +292,8 @@ interface ValidatorServiceInterface
      * @param string $methodName Name of the method to check for.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isRequiredExistingMethod($object, $methodName);
 
@@ -251,6 +303,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalPositiveInteger($value);
 
@@ -260,6 +314,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalZeroPositiveInteger($value);
 
@@ -269,6 +325,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalPositiveNumber($value);
 
@@ -278,6 +336,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalZeroPositiveNumber($value);
 
@@ -287,6 +347,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalInteger($value);
 
@@ -298,6 +360,8 @@ interface ValidatorServiceInterface
      * @param integer $max   Upper limit.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalIntegerRange($value, $min, $max);
 
@@ -309,6 +373,8 @@ interface ValidatorServiceInterface
      * @param integer $max   Upper limit.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalNumberRange($value, $min, $max);
 
@@ -318,6 +384,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalBool($value);
 
@@ -327,6 +395,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalFloat($value);
 
@@ -336,6 +406,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalDouble($value);
 
@@ -345,6 +417,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalScalar($value);
 
@@ -354,6 +428,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalArray($value);
 
@@ -363,6 +439,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalArrayNotEmpty($value);
 
@@ -372,6 +450,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalString($value);
 
@@ -381,6 +461,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalStringNotEmpty($value);
 
@@ -390,6 +472,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalNotEmpty($value);
 
@@ -399,6 +483,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalObject($value);
 
@@ -408,6 +494,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalUrl($value);
 
@@ -417,6 +505,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalEmail($value);
 
@@ -426,6 +516,8 @@ interface ValidatorServiceInterface
      * @param mixed $value Value.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalIpAddress($value);
 
@@ -436,6 +528,8 @@ interface ValidatorServiceInterface
      * @param array  $values Array in which to search.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalExistingKey($key, array $values);
 
@@ -446,6 +540,8 @@ interface ValidatorServiceInterface
      * @param array $values Array in which to search.
      *
      * @return boolean
+     *
+     * @throws ValidationException
      */
     public function isOptionalExistingValue($value, array $values);
 
@@ -455,4 +551,18 @@ interface ValidatorServiceInterface
      * @return string
      */
     public function getLastError();
+
+    /**
+     * Enables exceptions on failed validations.
+     *
+     * @return ValidatorServiceInterface
+     */
+    public function enableExceptions();
+
+    /**
+     * Disables exceptions on failed validations.
+     *
+     * @return ValidatorServiceInterface
+     */
+    public function disableExceptions();
 }

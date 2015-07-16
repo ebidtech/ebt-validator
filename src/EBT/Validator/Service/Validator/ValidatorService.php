@@ -1098,9 +1098,7 @@ class ValidatorService implements ValidatorServiceInterface
     }
 
     /**
-     * Enables exceptions on failed validations.
-     *
-     * @return ValidatorService
+     * {@inheritDoc}
      */
     public function enableExceptions()
     {
@@ -1110,9 +1108,7 @@ class ValidatorService implements ValidatorServiceInterface
     }
 
     /**
-     * Disables exceptions on failed validations.
-     *
-     * @return ValidatorService
+     * {@inheritDoc}
      */
     public function disableExceptions()
     {
