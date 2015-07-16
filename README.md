@@ -43,7 +43,14 @@ $validator->requiredInteger('not an integer'); // false
 // It is possible to retrieve the message for the last
 // failed validation.
 $validator->requireString(5);                  // false
-$validator->getLastError();                    // Expected string, "integer" given.
+$validator->getLastError();                    // 'Expected string, "integer" given.'
+
+// It is also possible to configure the validator service to
+// throw an exception when a validation fails.
+$validator->enableExceptions();
+$validator->requirePositiveInteger(-1);        // throws ValidationException
+$validator->disableExceptions();
+$validator->requirePositiveInteger(-1);        // false
 
 // Required validations will fail if the value is not defined, 
 // optional validations will not.
