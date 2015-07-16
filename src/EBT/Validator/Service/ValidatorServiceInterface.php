@@ -14,13 +14,31 @@ namespace EBT\Validator\Service;
 interface ValidatorServiceInterface
 {
     /**
+     * Required value is not null.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public function isRequiredNotNull($value);
+
+    /**
+     * Required value is a positive integer.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public function isRequiredPositiveInteger($value);
+
+    /**
      * Required value is zero or positive integer.
      *
      * @param mixed $value Value.
      *
      * @return boolean
      */
-    public function requiredZeroPositiveInteger($value);
+    public function isRequiredZeroPositiveInteger($value);
 
     /**
      * Required value is a positive number.
@@ -29,7 +47,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredPositiveNumber($value);
+    public function isRequiredPositiveNumber($value);
 
     /**
      * Required value is zero or positive number.
@@ -38,7 +56,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredZeroPositiveNumber($value);
+    public function isRequiredZeroPositiveNumber($value);
 
     /**
      * Required value is integer.
@@ -47,7 +65,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredInteger($value);
+    public function isRequiredInteger($value);
 
     /**
      * Required value is integer in range.
@@ -58,7 +76,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredIntegerRange($value, $min, $max);
+    public function isRequiredIntegerRange($value, $min, $max);
 
     /**
      * Required value is number in range.
@@ -69,7 +87,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredNumberRange($value, $min, $max);
+    public function isRequiredNumberRange($value, $min, $max);
 
     /**
      * Required value is boolean.
@@ -78,7 +96,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredBool($value);
+    public function isRequiredBool($value);
 
     /**
      * Required value is float.
@@ -87,7 +105,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredFloat($value);
+    public function isRequiredFloat($value);
 
     /**
      * Required value is double.
@@ -96,7 +114,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredDouble($value);
+    public function isRequiredDouble($value);
 
     /**
      * Require value is scalar.
@@ -105,7 +123,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredScalar($value);
+    public function isRequiredScalar($value);
 
     /**
      * Required value is array.
@@ -114,7 +132,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredArray($value);
+    public function isRequiredArray($value);
 
     /**
      * Required value is array and not empty.
@@ -123,7 +141,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredArrayNotEmpty($value);
+    public function isRequiredArrayNotEmpty($value);
 
     /**
      * Required value is string.
@@ -132,7 +150,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredString($value);
+    public function isRequiredString($value);
 
     /**
      * Required value is string not empty.
@@ -141,7 +159,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredStringNotEmpty($value);
+    public function isRequiredStringNotEmpty($value);
 
     /**
      * Required value against empty.
@@ -150,7 +168,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredNotEmpty($value);
+    public function isRequiredNotEmpty($value);
 
     /**
      * Required value is an object.
@@ -159,7 +177,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredObject($value);
+    public function isRequiredObject($value);
 
     /**
      * Required values in an URL.
@@ -168,7 +186,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredUrl($value);
+    public function isRequiredUrl($value);
 
     /**
      * Required value is an email.
@@ -177,7 +195,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredEmail($value);
+    public function isRequiredEmail($value);
 
     /**
      * Required value is an IP address.
@@ -186,7 +204,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredIpAddress($value);
+    public function isRequiredIpAddress($value);
 
     /**
      * Required key exists.
@@ -196,7 +214,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredKeyExists($key, array $values);
+    public function isRequiredExistingKey($key, array $values);
 
     /**
      * Required value exists (in array).
@@ -206,7 +224,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredValueExists($value, array $values);
+    public function isRequiredExistingValue($value, array $values);
 
     /**
      * Check if a given class name exists.
@@ -215,7 +233,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredExistingClass($className);
+    public function isRequiredExistingClass($className);
 
     /**
      * Check if a given method name exists for a given class.
@@ -225,7 +243,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function requiredExistingMethod($object, $methodName);
+    public function isRequiredExistingMethod($object, $methodName);
 
     /**
      * Optional value is a positive integer.
@@ -234,16 +252,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalPositiveInteger($value);
-
-    /**
-     * Required value is a positive integer.
-     *
-     * @param mixed $value Value.
-     *
-     * @return boolean
-     */
-    public function requiredPositiveInteger($value);
+    public function isOptionalPositiveInteger($value);
 
     /**
      * Optional value is zero or positive integer.
@@ -252,7 +261,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalZeroPositiveInteger($value);
+    public function isOptionalZeroPositiveInteger($value);
 
     /**
      * Optional value is a positive number.
@@ -261,7 +270,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalPositiveNumber($value);
+    public function isOptionalPositiveNumber($value);
 
     /**
      * Optional value is zero or positive number.
@@ -270,7 +279,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalZeroPositiveNumber($value);
+    public function isOptionalZeroPositiveNumber($value);
 
     /**
      * Optional value is integer.
@@ -279,7 +288,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalInteger($value);
+    public function isOptionalInteger($value);
 
     /**
      * Optional value is integer in range.
@@ -290,7 +299,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalIntegerRange($value, $min, $max);
+    public function isOptionalIntegerRange($value, $min, $max);
 
     /**
      * Optional value is number in range.
@@ -301,7 +310,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalNumberRange($value, $min, $max);
+    public function isOptionalNumberRange($value, $min, $max);
 
     /**
      * Optional value is boolean.
@@ -310,7 +319,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalBool($value);
+    public function isOptionalBool($value);
 
     /**
      * Optional value is float.
@@ -319,7 +328,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalFloat($value);
+    public function isOptionalFloat($value);
 
     /**
      * Optional value is double.
@@ -328,7 +337,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalDouble($value);
+    public function isOptionalDouble($value);
 
     /**
      * Optional value is scalar.
@@ -337,7 +346,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalScalar($value);
+    public function isOptionalScalar($value);
 
     /**
      * Optional value is array.
@@ -346,7 +355,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalArray($value);
+    public function isOptionalArray($value);
 
     /**
      * Optional value is array and not empty.
@@ -355,7 +364,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalArrayNotEmpty($value);
+    public function isOptionalArrayNotEmpty($value);
 
     /**
      * Optional value is string.
@@ -364,7 +373,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalString($value);
+    public function isOptionalString($value);
 
     /**
      * Optional value is string not empty.
@@ -373,7 +382,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalStringNotEmpty($value);
+    public function isOptionalStringNotEmpty($value);
 
     /**
      * Optional value against empty.
@@ -382,7 +391,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalNotEmpty($value);
+    public function isOptionalNotEmpty($value);
 
     /**
      * Optional value is an object.
@@ -391,7 +400,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalObject($value);
+    public function isOptionalObject($value);
 
     /**
      * Optional values in an URL.
@@ -400,7 +409,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalUrl($value);
+    public function isOptionalUrl($value);
 
     /**
      * Optional value is an email.
@@ -409,7 +418,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalEmail($value);
+    public function isOptionalEmail($value);
 
     /**
      * Optional value is an IP address.
@@ -418,7 +427,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalIpAddress($value);
+    public function isOptionalIpAddress($value);
 
     /**
      * Optional key exists.
@@ -428,7 +437,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalKeyExists($key, array $values);
+    public function isOptionalExistingKey($key, array $values);
 
     /**
      * Optional value exists (in array).
@@ -438,7 +447,7 @@ interface ValidatorServiceInterface
      *
      * @return boolean
      */
-    public function optionalValueExists($value, array $values);
+    public function isOptionalExistingValue($value, array $values);
 
     /**
      * Retrieves the last validation error.

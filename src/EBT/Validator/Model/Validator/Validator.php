@@ -14,13 +14,25 @@ namespace EBT\Validator\Model\Validator;
 abstract class Validator
 {
     /**
+     * Required value is not null.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public static function isRequiredNotNull($value)
+    {
+        return ! is_null($value);
+    }
+
+    /**
      * Required value is zero or positive integer.
      *
      * @param mixed $value Value.
      *
      * @return boolean
      */
-    public static function requiredZeroPositiveInteger($value)
+    public static function isRequiredZeroPositiveInteger($value)
     {
         return is_int($value) && 0 <= $value;
     }
@@ -32,7 +44,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredPositiveNumber($value)
+    public static function isRequiredPositiveNumber($value)
     {
         return is_numeric($value) && 1 <= $value;
     }
@@ -44,7 +56,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredZeroPositiveNumber($value)
+    public static function isRequiredZeroPositiveNumber($value)
     {
         return is_numeric($value) && 0 <= $value;
     }
@@ -56,7 +68,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredInteger($value)
+    public static function isRequiredInteger($value)
     {
         return is_int($value);
     }
@@ -70,7 +82,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredIntegerRange($value, $min, $max)
+    public static function isRequiredIntegerRange($value, $min, $max)
     {
         return is_int($value) && $min <= $value && $max >= $value;
     }
@@ -84,7 +96,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredNumberRange($value, $min, $max)
+    public static function isRequiredNumberRange($value, $min, $max)
     {
         return is_numeric($value) && $min <= $value && $max >= $value;
     }
@@ -96,7 +108,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredBool($value)
+    public static function isRequiredBool($value)
     {
         return is_bool($value);
     }
@@ -108,7 +120,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredFloat($value)
+    public static function isRequiredFloat($value)
     {
         return is_float($value);
     }
@@ -120,7 +132,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredDouble($value)
+    public static function isRequiredDouble($value)
     {
         return is_double($value);
     }
@@ -132,7 +144,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredScalar($value)
+    public static function isRequiredScalar($value)
     {
         return is_scalar($value);
     }
@@ -144,7 +156,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredArray($value)
+    public static function isRequiredArray($value)
     {
         return is_array($value);
     }
@@ -156,7 +168,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredArrayNotEmpty($value)
+    public static function isRequiredArrayNotEmpty($value)
     {
         return is_array($value) && ! empty($value);
     }
@@ -168,7 +180,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredString($value)
+    public static function isRequiredString($value)
     {
         return is_string($value);
     }
@@ -180,7 +192,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredStringNotEmpty($value)
+    public static function isRequiredStringNotEmpty($value)
     {
         return is_string($value) && ! empty($value);
     }
@@ -192,7 +204,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredNotEmpty($value)
+    public static function isRequiredNotEmpty($value)
     {
         return ! empty($value);
     }
@@ -204,7 +216,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredObject($value)
+    public static function isRequiredObject($value)
     {
         return is_object($value);
     }
@@ -216,7 +228,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredUrl($value)
+    public static function isRequiredUrl($value)
     {
         return is_string($value) && false !== filter_var($value, FILTER_VALIDATE_URL);
     }
@@ -228,7 +240,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredEmail($value)
+    public static function isRequiredEmail($value)
     {
         return is_string($value) && false !== filter_var($value, FILTER_VALIDATE_EMAIL);
     }
@@ -240,7 +252,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredIpAddress($value)
+    public static function isRequiredIpAddress($value)
     {
         return is_string($value) && false !== filter_var($value, FILTER_VALIDATE_IP);
     }
@@ -253,7 +265,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredKeyExists($key, array $values)
+    public static function isRequiredExistingKey($key, array $values)
     {
         return array_key_exists($key, $values);
     }
@@ -266,7 +278,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredValueExists($value, array $values)
+    public static function isRequiredExistingValue($value, array $values)
     {
         return in_array($value, $values);
     }
@@ -278,7 +290,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredExistingClass($className)
+    public static function isRequiredExistingClass($className)
     {
         return class_exists($className);
     }
@@ -291,7 +303,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredExistingMethod($object, $methodName)
+    public static function isRequiredExistingMethod($object, $methodName)
     {
         return is_object($object) && method_exists($object, $methodName);
     }
@@ -303,7 +315,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalPositiveInteger($value)
+    public static function isOptionalPositiveInteger($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -311,7 +323,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredPositiveInteger($value);
+        return self::isRequiredPositiveInteger($value);
     }
 
     /**
@@ -321,7 +333,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function requiredPositiveInteger($value)
+    public static function isRequiredPositiveInteger($value)
     {
         return is_int($value) && 1 <= $value;
     }
@@ -333,7 +345,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalZeroPositiveInteger($value)
+    public static function isOptionalZeroPositiveInteger($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -341,7 +353,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredZeroPositiveInteger($value);
+        return self::isRequiredZeroPositiveInteger($value);
     }
 
     /**
@@ -351,7 +363,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalPositiveNumber($value)
+    public static function isOptionalPositiveNumber($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -359,7 +371,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredPositiveNumber($value);
+        return self::isRequiredPositiveNumber($value);
     }
 
     /**
@@ -369,7 +381,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalZeroPositiveNumber($value)
+    public static function isOptionalZeroPositiveNumber($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -377,7 +389,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredZeroPositiveNumber($value);
+        return self::isRequiredZeroPositiveNumber($value);
     }
 
     /**
@@ -387,7 +399,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalInteger($value)
+    public static function isOptionalInteger($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -395,7 +407,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredInteger($value);
+        return self::isRequiredInteger($value);
     }
 
     /**
@@ -407,7 +419,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalIntegerRange($value, $min, $max)
+    public static function isOptionalIntegerRange($value, $min, $max)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -415,7 +427,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredIntegerRange($value, $min, $max);
+        return self::isRequiredIntegerRange($value, $min, $max);
     }
 
     /**
@@ -427,7 +439,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalNumberRange($value, $min, $max)
+    public static function isOptionalNumberRange($value, $min, $max)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -435,7 +447,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredNumberRange($value, $min, $max);
+        return self::isRequiredNumberRange($value, $min, $max);
     }
 
     /**
@@ -445,7 +457,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalBool($value)
+    public static function isOptionalBool($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -453,7 +465,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredBool($value);
+        return self::isRequiredBool($value);
     }
 
     /**
@@ -463,7 +475,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalFloat($value)
+    public static function isOptionalFloat($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -471,7 +483,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredFloat($value);
+        return self::isRequiredFloat($value);
     }
 
     /**
@@ -481,7 +493,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalDouble($value)
+    public static function isOptionalDouble($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -489,7 +501,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredDouble($value);
+        return self::isRequiredDouble($value);
     }
 
     /**
@@ -499,7 +511,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalScalar($value)
+    public static function isOptionalScalar($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -507,7 +519,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredScalar($value);
+        return self::isRequiredScalar($value);
     }
 
     /**
@@ -517,7 +529,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalArray($value)
+    public static function isOptionalArray($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -525,7 +537,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredArray($value);
+        return self::isRequiredArray($value);
     }
 
     /**
@@ -535,7 +547,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalArrayNotEmpty($value)
+    public static function isOptionalArrayNotEmpty($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -543,7 +555,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredArrayNotEmpty($value);
+        return self::isRequiredArrayNotEmpty($value);
     }
 
     /**
@@ -553,7 +565,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalString($value)
+    public static function isOptionalString($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -561,7 +573,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredString($value);
+        return self::isRequiredString($value);
     }
 
     /**
@@ -571,7 +583,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalStringNotEmpty($value)
+    public static function isOptionalStringNotEmpty($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -579,7 +591,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredStringNotEmpty($value);
+        return self::isRequiredStringNotEmpty($value);
     }
 
     /**
@@ -589,7 +601,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalNotEmpty($value)
+    public static function isOptionalNotEmpty($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -597,7 +609,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredNotEmpty($value);
+        return self::isRequiredNotEmpty($value);
     }
 
     /**
@@ -607,7 +619,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalObject($value)
+    public static function isOptionalObject($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -615,7 +627,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredObject($value);
+        return self::isRequiredObject($value);
     }
 
     /**
@@ -625,7 +637,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalUrl($value)
+    public static function isOptionalUrl($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -633,7 +645,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredUrl($value);
+        return self::isRequiredUrl($value);
     }
 
     /**
@@ -643,7 +655,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalEmail($value)
+    public static function isOptionalEmail($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -651,7 +663,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredEmail($value);
+        return self::isRequiredEmail($value);
     }
 
     /**
@@ -661,7 +673,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalIpAddress($value)
+    public static function isOptionalIpAddress($value)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -669,7 +681,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredIpAddress($value);
+        return self::isRequiredIpAddress($value);
     }
 
     /**
@@ -680,7 +692,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalKeyExists($key, array $values)
+    public static function isOptionalExistingKey($key, array $values)
     {
         /* No additional validations when the value is null. */
         if (null === $key) {
@@ -688,7 +700,7 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredKeyExists($key, $values);
+        return self::isRequiredExistingKey($key, $values);
     }
 
     /**
@@ -699,7 +711,7 @@ abstract class Validator
      *
      * @return boolean
      */
-    public static function optionalValueExists($value, array $values)
+    public static function isOptionalExistingValue($value, array $values)
     {
         /* No additional validations when the value is null. */
         if (null === $value) {
@@ -707,6 +719,6 @@ abstract class Validator
             return true;
         }
 
-        return self::requiredValueExists($value, $values);
+        return self::isRequiredExistingValue($value, $values);
     }
 }

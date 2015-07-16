@@ -39,13 +39,35 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredPositiveInteger($value)
+    public function isRequiredNotNull($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredPositiveInteger($value)) {
+        if (Validator::isRequiredNotNull($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected not null, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredPositiveInteger($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredPositiveInteger($value)) {
             return true;
         }
 
@@ -62,13 +84,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredZeroPositiveInteger($value)
+    public function isRequiredZeroPositiveInteger($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredZeroPositiveInteger($value)) {
+        if (Validator::isRequiredZeroPositiveInteger($value)) {
             return true;
         }
 
@@ -85,13 +107,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredPositiveNumber($value)
+    public function isRequiredPositiveNumber($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredPositiveNumber($value)) {
+        if (Validator::isRequiredPositiveNumber($value)) {
             return true;
         }
 
@@ -108,13 +130,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredZeroPositiveNumber($value)
+    public function isRequiredZeroPositiveNumber($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredZeroPositiveNumber($value)) {
+        if (Validator::isRequiredZeroPositiveNumber($value)) {
             return true;
         }
 
@@ -131,13 +153,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredInteger($value)
+    public function isRequiredInteger($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredInteger($value)) {
+        if (Validator::isRequiredInteger($value)) {
             return true;
         }
 
@@ -153,13 +175,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredIntegerRange($value, $min, $max)
+    public function isRequiredIntegerRange($value, $min, $max)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredIntegerRange($value, $min, $max)) {
+        if (Validator::isRequiredIntegerRange($value, $min, $max)) {
             return true;
         }
 
@@ -177,13 +199,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredNumberRange($value, $min, $max)
+    public function isRequiredNumberRange($value, $min, $max)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredNumberRange($value, $min, $max)) {
+        if (Validator::isRequiredNumberRange($value, $min, $max)) {
             return true;
         }
 
@@ -201,13 +223,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredBool($value)
+    public function isRequiredBool($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredBool($value)) {
+        if (Validator::isRequiredBool($value)) {
             return true;
         }
 
@@ -223,13 +245,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredFloat($value)
+    public function isRequiredFloat($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredFloat($value)) {
+        if (Validator::isRequiredFloat($value)) {
             return true;
         }
 
@@ -245,13 +267,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredDouble($value)
+    public function isRequiredDouble($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredDouble($value)) {
+        if (Validator::isRequiredDouble($value)) {
             return true;
         }
 
@@ -267,13 +289,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredScalar($value)
+    public function isRequiredScalar($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredScalar($value)) {
+        if (Validator::isRequiredScalar($value)) {
             return true;
         }
 
@@ -289,13 +311,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredArray($value)
+    public function isRequiredArray($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredArray($value)) {
+        if (Validator::isRequiredArray($value)) {
             return true;
         }
 
@@ -311,13 +333,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredArrayNotEmpty($value)
+    public function isRequiredArrayNotEmpty($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredArrayNotEmpty($value)) {
+        if (Validator::isRequiredArrayNotEmpty($value)) {
             return true;
         }
 
@@ -334,13 +356,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredString($value)
+    public function isRequiredString($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredString($value)) {
+        if (Validator::isRequiredString($value)) {
             return true;
         }
 
@@ -356,13 +378,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredStringNotEmpty($value)
+    public function isRequiredStringNotEmpty($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredStringNotEmpty($value)) {
+        if (Validator::isRequiredStringNotEmpty($value)) {
             return true;
         }
 
@@ -378,13 +400,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredNotEmpty($value)
+    public function isRequiredNotEmpty($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredNotEmpty($value)) {
+        if (Validator::isRequiredNotEmpty($value)) {
             return true;
         }
 
@@ -400,13 +422,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredObject($value)
+    public function isRequiredObject($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredObject($value)) {
+        if (Validator::isRequiredObject($value)) {
             return true;
         }
 
@@ -422,13 +444,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredUrl($value)
+    public function isRequiredUrl($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredUrl($value)) {
+        if (Validator::isRequiredUrl($value)) {
             return true;
         }
 
@@ -444,13 +466,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredEmail($value)
+    public function isRequiredEmail($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredEmail($value)) {
+        if (Validator::isRequiredEmail($value)) {
             return true;
         }
 
@@ -466,13 +488,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredIpAddress($value)
+    public function isRequiredIpAddress($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredIpAddress($value)) {
+        if (Validator::isRequiredIpAddress($value)) {
             return true;
         }
 
@@ -488,13 +510,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredKeyExists($key, array $values)
+    public function isRequiredExistingKey($key, array $values)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredKeyExists($key, $values)) {
+        if (Validator::isRequiredExistingKey($key, $values)) {
             return true;
         }
 
@@ -510,13 +532,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredValueExists($value, array $values)
+    public function isRequiredExistingValue($value, array $values)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredValueExists($value, $values)) {
+        if (Validator::isRequiredExistingValue($value, $values)) {
             return true;
         }
 
@@ -532,13 +554,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredExistingClass($className)
+    public function isRequiredExistingClass($className)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredExistingClass($className)) {
+        if (Validator::isRequiredExistingClass($className)) {
             return true;
         }
 
@@ -554,13 +576,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function requiredExistingMethod($object, $methodName)
+    public function isRequiredExistingMethod($object, $methodName)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::requiredExistingMethod($object, $methodName)) {
+        if (Validator::isRequiredExistingMethod($object, $methodName)) {
             return true;
         }
 
@@ -577,13 +599,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalPositiveInteger($value)
+    public function isOptionalPositiveInteger($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalPositiveInteger($value)) {
+        if (Validator::isOptionalPositiveInteger($value)) {
             return true;
         }
 
@@ -600,13 +622,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalZeroPositiveInteger($value)
+    public function isOptionalZeroPositiveInteger($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalZeroPositiveInteger($value)) {
+        if (Validator::isOptionalZeroPositiveInteger($value)) {
             return true;
         }
 
@@ -623,13 +645,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalPositiveNumber($value)
+    public function isOptionalPositiveNumber($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalPositiveNumber($value)) {
+        if (Validator::isOptionalPositiveNumber($value)) {
             return true;
         }
 
@@ -646,13 +668,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalZeroPositiveNumber($value)
+    public function isOptionalZeroPositiveNumber($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalZeroPositiveNumber($value)) {
+        if (Validator::isOptionalZeroPositiveNumber($value)) {
             return true;
         }
 
@@ -669,13 +691,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalInteger($value)
+    public function isOptionalInteger($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalInteger($value)) {
+        if (Validator::isOptionalInteger($value)) {
             return true;
         }
 
@@ -691,13 +713,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalIntegerRange($value, $min, $max)
+    public function isOptionalIntegerRange($value, $min, $max)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalIntegerRange($value, $min, $max)) {
+        if (Validator::isOptionalIntegerRange($value, $min, $max)) {
             return true;
         }
 
@@ -715,13 +737,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalNumberRange($value, $min, $max)
+    public function isOptionalNumberRange($value, $min, $max)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalNumberRange($value, $min, $max)) {
+        if (Validator::isOptionalNumberRange($value, $min, $max)) {
             return true;
         }
 
@@ -739,13 +761,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalBool($value)
+    public function isOptionalBool($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalBool($value)) {
+        if (Validator::isOptionalBool($value)) {
             return true;
         }
 
@@ -761,13 +783,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalFloat($value)
+    public function isOptionalFloat($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalFloat($value)) {
+        if (Validator::isOptionalFloat($value)) {
             return true;
         }
 
@@ -783,13 +805,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalDouble($value)
+    public function isOptionalDouble($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalDouble($value)) {
+        if (Validator::isOptionalDouble($value)) {
             return true;
         }
 
@@ -805,13 +827,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalScalar($value)
+    public function isOptionalScalar($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalScalar($value)) {
+        if (Validator::isOptionalScalar($value)) {
             return true;
         }
 
@@ -827,13 +849,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalArray($value)
+    public function isOptionalArray($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalArray($value)) {
+        if (Validator::isOptionalArray($value)) {
             return true;
         }
 
@@ -849,13 +871,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalArrayNotEmpty($value)
+    public function isOptionalArrayNotEmpty($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalArrayNotEmpty($value)) {
+        if (Validator::isOptionalArrayNotEmpty($value)) {
             return true;
         }
 
@@ -872,13 +894,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalString($value)
+    public function isOptionalString($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalString($value)) {
+        if (Validator::isOptionalString($value)) {
             return true;
         }
 
@@ -894,13 +916,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalStringNotEmpty($value)
+    public function isOptionalStringNotEmpty($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalStringNotEmpty($value)) {
+        if (Validator::isOptionalStringNotEmpty($value)) {
             return true;
         }
 
@@ -916,13 +938,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalNotEmpty($value)
+    public function isOptionalNotEmpty($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalNotEmpty($value)) {
+        if (Validator::isOptionalNotEmpty($value)) {
             return true;
         }
 
@@ -938,13 +960,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalObject($value)
+    public function isOptionalObject($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalObject($value)) {
+        if (Validator::isOptionalObject($value)) {
             return true;
         }
 
@@ -960,13 +982,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalUrl($value)
+    public function isOptionalUrl($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalUrl($value)) {
+        if (Validator::isOptionalUrl($value)) {
             return true;
         }
 
@@ -982,13 +1004,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalEmail($value)
+    public function isOptionalEmail($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalEmail($value)) {
+        if (Validator::isOptionalEmail($value)) {
             return true;
         }
 
@@ -1004,13 +1026,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalIpAddress($value)
+    public function isOptionalIpAddress($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalIpAddress($value)) {
+        if (Validator::isOptionalIpAddress($value)) {
             return true;
         }
 
@@ -1026,13 +1048,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalKeyExists($key, array $values)
+    public function isOptionalExistingKey($key, array $values)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalKeyExists($key, $values)) {
+        if (Validator::isOptionalExistingKey($key, $values)) {
             return true;
         }
 
@@ -1048,13 +1070,13 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function optionalValueExists($value, array $values)
+    public function isOptionalExistingValue($value, array $values)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::optionalValueExists($value, $values)) {
+        if (Validator::isOptionalExistingValue($value, $values)) {
             return true;
         }
 
