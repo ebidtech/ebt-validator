@@ -40,11 +40,6 @@ $validator = new EBT\Validator\Service\Validator\ValidatorService();
 $validator->requireString('a string');         // true
 $validator->requiredInteger('not an integer'); // false
 
-// When an exceptions class is defined, failed validations
-// THROW AN EXCEPTION instead.
-$validator->requiredInteger(1);                // true
-$validator->requiredInteger('');               // throws \Exception
-
 // It is possible to retrieve the message for the last
 // failed validation.
 $validator->requireString(5);                  // false
