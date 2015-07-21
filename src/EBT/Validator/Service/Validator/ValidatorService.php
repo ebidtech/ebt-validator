@@ -107,21 +107,21 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveNumber($value)
+    public function isRequiredPositiveNumeric($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::isRequiredPositiveNumber($value)) {
+        if (Validator::isRequiredPositiveNumeric($value)) {
             return true;
         }
 
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected positive number, "%s" given.',
-            ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
+            'Expected positive numeric, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'zero or negative numeric' : $type
         );
 
         return $this->validationFailed();
@@ -130,21 +130,21 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveNumber($value)
+    public function isRequiredZeroPositiveNumeric($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::isRequiredZeroPositiveNumber($value)) {
+        if (Validator::isRequiredZeroPositiveNumeric($value)) {
             return true;
         }
 
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected zero or positive number, "%s" given.',
-            ('integer' === $type || 'double' === $type) ? 'negative number' : $type
+            'Expected zero or positive numeric, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'negative numeric' : $type
         );
 
         return $this->validationFailed();
@@ -199,19 +199,19 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNumberRange($value, $min, $max)
+    public function isRequiredNumericRange($value, $min, $max)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::isRequiredNumberRange($value, $min, $max)) {
+        if (Validator::isRequiredNumericRange($value, $min, $max)) {
             return true;
         }
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects number in range [%d, %d], "%d" given.',
+            'Expects numeric in range [%d, %d], "%d" given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
@@ -258,28 +258,6 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $this->lastError = sprintf(
             'Expected float, "%s" given.',
-            gettype($value)
-        );
-
-        return $this->validationFailed();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isRequiredDouble($value)
-    {
-        /* Clear the last error. */
-        $this->lastError = null;
-
-        /* If valid just return true. */
-        if (Validator::isRequiredDouble($value)) {
-            return true;
-        }
-
-        /* Set the error message. */
-        $this->lastError = sprintf(
-            'Expected double, "%s" given.',
             gettype($value)
         );
 
@@ -645,21 +623,21 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isOptionalPositiveNumber($value)
+    public function isOptionalPositiveNumeric($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::isOptionalPositiveNumber($value)) {
+        if (Validator::isOptionalPositiveNumeric($value)) {
             return true;
         }
 
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null or positive number, "%s" given.',
-            ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
+            'Expected null or positive numeric, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'zero or negative numeric' : $type
         );
 
         return $this->validationFailed();
@@ -668,21 +646,21 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isOptionalZeroPositiveNumber($value)
+    public function isOptionalZeroPositiveNumeric($value)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::isOptionalZeroPositiveNumber($value)) {
+        if (Validator::isOptionalZeroPositiveNumeric($value)) {
             return true;
         }
 
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null, zero or positive number, "%s" given.',
-            ('integer' === $type || 'double' === $type) ? 'negative number' : $type
+            'Expected null, zero or positive numeric, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'negative numeric' : $type
         );
 
         return $this->validationFailed();
@@ -737,19 +715,19 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isOptionalNumberRange($value, $min, $max)
+    public function isOptionalNumericRange($value, $min, $max)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
-        if (Validator::isOptionalNumberRange($value, $min, $max)) {
+        if (Validator::isOptionalNumericRange($value, $min, $max)) {
             return true;
         }
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects null or number in range [%d, %d], "%d" given.',
+            'Expects null or numeric in range [%d, %d], "%d" given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
@@ -796,28 +774,6 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $this->lastError = sprintf(
             'Expected null or float, "%s" given.',
-            gettype($value)
-        );
-
-        return $this->validationFailed();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isOptionalDouble($value)
-    {
-        /* Clear the last error. */
-        $this->lastError = null;
-
-        /* If valid just return true. */
-        if (Validator::isOptionalDouble($value)) {
-            return true;
-        }
-
-        /* Set the error message. */
-        $this->lastError = sprintf(
-            'Expected null or double, "%s" given.',
             gettype($value)
         );
 
@@ -1084,6 +1040,374 @@ class ValidatorService implements ValidatorServiceInterface
         $this->lastError = sprintf(
             'Expected null or array to contain value "%s".',
             $value
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredPositiveFloat($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredPositiveFloat($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected positive float, "%s" given.',
+            ('double' === $type) ? 'zero or negative float' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredZeroPositiveFloat($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredZeroPositiveFloat($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected zero or positive float, "%s" given.',
+            ('double' === $type) ? 'negative float' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredFloatRange($value, $min, $max)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredFloatRange($value, $min, $max)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expects float in range [%d, %d], "%d" given.',
+            $min,
+            $max,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalPositiveFloat($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalPositiveFloat($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected null or positive float, "%s" given.',
+            ('double' === $type) ? 'zero or negative float' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalZeroPositiveFloat($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalZeroPositiveFloat($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected null, zero or positive float, "%s" given.',
+            ('double' === $type) ? 'negative float' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalFloatRange($value, $min, $max)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalFloatRange($value, $min, $max)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expects null or float in range [%d, %d], "%d" given.',
+            $min,
+            $max,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredNumber($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredNumber($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected number, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalNumber($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalNumber($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected null or number, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredNumeric($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredNumeric($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected numeric, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalNumeric($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalNumeric($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected null or numeric, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredPositiveNumber($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredPositiveNumber($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected positive number, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredZeroPositiveNumber($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredZeroPositiveNumber($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected zero or positive number, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'negative number' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredNumberRange($value, $min, $max)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredNumberRange($value, $min, $max)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expects number in range [%d, %d], "%d" given.',
+            $min,
+            $max,
+            is_scalar($value) ? $value : gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalPositiveNumber($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalPositiveNumber($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected null or positive number, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalZeroPositiveNumber($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalZeroPositiveNumber($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $type            = gettype($value);
+        $this->lastError = sprintf(
+            'Expected null, zero or positive number, "%s" given.',
+            ('integer' === $type || 'double' === $type) ? 'negative number' : $type
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isOptionalNumberRange($value, $min, $max)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isOptionalNumberRange($value, $min, $max)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expects null or number in range [%d, %d], "%d" given.',
+            $min,
+            $max,
+            is_scalar($value) ? $value : gettype($value)
         );
 
         return $this->validationFailed();
