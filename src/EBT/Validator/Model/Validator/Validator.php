@@ -951,7 +951,19 @@ abstract class Validator
     }
 
     /**
-     * Required value against empty.
+     * Required value is null.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public static function isRequiredNull($value)
+    {
+        return is_null($value);
+    }
+
+    /**
+     * Required value is not empty.
      *
      * @param mixed $value Value.
      *
@@ -963,7 +975,19 @@ abstract class Validator
     }
 
     /**
-     * Optional value against empty.
+     * Required value is empty.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     */
+    public static function isRequiredEmpty($value)
+    {
+        return empty($value);
+    }
+
+    /**
+     * Optional value is not empty.
      *
      * @param mixed $value Value.
      *

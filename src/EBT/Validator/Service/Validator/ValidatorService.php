@@ -61,6 +61,28 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
+    public function isRequiredNull($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredNull($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected null, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function isRequiredPositiveInteger($value)
     {
         /* Clear the last error. */
@@ -391,6 +413,28 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $this->lastError = sprintf(
             'Expected not empty, "%s" given.',
+            gettype($value)
+        );
+
+        return $this->validationFailed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequiredEmpty($value)
+    {
+        /* Clear the last error. */
+        $this->lastError = null;
+
+        /* If valid just return true. */
+        if (Validator::isRequiredEmpty($value)) {
+            return true;
+        }
+
+        /* Set the error message. */
+        $this->lastError = sprintf(
+            'Expected empty, "%s" given.',
             gettype($value)
         );
 

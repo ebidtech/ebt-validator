@@ -726,7 +726,18 @@ interface ValidatorServiceInterface
     public function isRequiredNotNull($value);
 
     /**
-     * Required value against empty.
+     * Required value is null.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     *
+     * @throws ValidationException
+     */
+    public function isRequiredNull($value);
+
+    /**
+     * Required value is not empty.
      *
      * @param mixed $value Value.
      *
@@ -737,7 +748,18 @@ interface ValidatorServiceInterface
     public function isRequiredNotEmpty($value);
 
     /**
-     * Optional value against empty.
+     * Required value is empty.
+     *
+     * @param mixed $value Value.
+     *
+     * @return boolean
+     *
+     * @throws ValidationException
+     */
+    public function isRequiredEmpty($value);
+
+    /**
+     * Optional value is not empty.
      *
      * @param mixed $value Value.
      *
