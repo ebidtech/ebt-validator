@@ -10,7 +10,7 @@ Just create a `composer.json` file for your project:
 ``` json
 {
     "require": {
-        "ebidtech/ebt-validator": "1.*"
+        "ebidtech/ebt-validator": "2.*"
     }
 }
 ```
@@ -45,12 +45,12 @@ $validator->requiredInteger('not an integer'); // false
 $validator->requireString(5);                  // false
 $validator->getLastError();                    // 'Expected string, "integer" given.'
 
-// It is also possible to configure the validator service to
-// throw an exception when a validation fails.
-$validator->enableExceptions();
-$validator->requirePositiveInteger(-1);        // throws ValidationException
-$validator->disableExceptions();
+// It is also possible to pass an additional parameter to any validation method
+// to control whether or not exceptions are suppressed when a validation fails.
+// By default, exceptions suppressed.
 $validator->requirePositiveInteger(-1);        // false
+$validator->requirePositiveInteger(-1, true);  // false
+$validator->requirePositiveInteger(-1, false); // throws ValidationException
 
 // Required validations will fail if the value is not defined, 
 // optional validations will not.
