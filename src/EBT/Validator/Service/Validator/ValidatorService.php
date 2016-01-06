@@ -23,23 +23,17 @@ class ValidatorService implements ValidatorServiceInterface
     protected $lastError;
 
     /**
-     * @var boolean
-     */
-    protected $exceptionEnabled;
-
-    /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->lastError        = null;
-        $this->exceptionEnabled = false;
+        $this->lastError = null;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNotNull($value)
+    public function isRequiredNotNull($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -51,17 +45,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected not null, "%s" given.',
+            'Expected not null, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNull($value)
+    public function isRequiredNull($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -73,17 +67,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null, "%s" given.',
+            'Expected null, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveInteger($value)
+    public function isRequiredPositiveInteger($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -96,17 +90,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected positive integer, "%s" given.',
+            'Expected positive integer, \'%s\' given.',
             ('integer' === $type) ? 'zero or negative integer' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveInteger($value)
+    public function isRequiredZeroPositiveInteger($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -119,17 +113,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected zero or positive integer, "%s" given.',
+            'Expected zero or positive integer, \'%s\' given.',
             ('integer' === $type) ? 'negative integer' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveNumeric($value)
+    public function isRequiredPositiveNumeric($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -142,17 +136,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected positive numeric, "%s" given.',
+            'Expected positive numeric, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'zero or negative numeric' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveNumeric($value)
+    public function isRequiredZeroPositiveNumeric($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -165,17 +159,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected zero or positive numeric, "%s" given.',
+            'Expected zero or positive numeric, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'negative numeric' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredInteger($value)
+    public function isRequiredInteger($value, $suppressException = true, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -187,17 +181,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected integer, "%s" given.',
+            'Expected integer, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredIntegerRange($value, $min, $max)
+    public function isRequiredIntegerRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -209,19 +203,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects integer in range [%d, %d], "%d" given.',
+            'Expects integer in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNumericRange($value, $min, $max)
+    public function isRequiredNumericRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -233,19 +227,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects numeric in range [%d, %d], "%d" given.',
+            'Expects numeric in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredBool($value)
+    public function isRequiredBool($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -257,17 +251,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected boolean, "%s" given.',
+            'Expected boolean, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredFloat($value)
+    public function isRequiredFloat($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -279,17 +273,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected float, "%s" given.',
+            'Expected float, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredScalar($value)
+    public function isRequiredScalar($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -301,17 +295,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected scalar, "%s" given.',
+            'Expected scalar, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredArray($value)
+    public function isRequiredArray($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -323,17 +317,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected array, "%s" given.',
+            'Expected array, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredArrayNotEmpty($value)
+    public function isRequiredArrayNotEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -346,17 +340,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = 'array' === gettype($value) ? 'empty array' : gettype($value);
         $this->lastError = sprintf(
-            'Expected array not empty, "%s" given.',
+            'Expected array not empty, \'%s\' given.',
             $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredString($value)
+    public function isRequiredString($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -368,17 +362,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected string, "%s" given.',
+            'Expected string, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredStringNotEmpty($value)
+    public function isRequiredStringNotEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -390,17 +384,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected string not empty, "%s" given.',
+            'Expected string not empty, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNotEmpty($value)
+    public function isRequiredNotEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -412,17 +406,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected not empty, "%s" given.',
+            'Expected not empty, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredEmpty($value)
+    public function isRequiredEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -434,17 +428,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected empty, "%s" given.',
+            'Expected empty, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredObject($value)
+    public function isRequiredObject($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -456,17 +450,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected object, "%s" given.',
+            'Expected object, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredUrl($value)
+    public function isRequiredUrl($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -478,17 +472,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected URL, "%s" given.',
+            'Expected URL, \'%s\' given.',
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredEmail($value)
+    public function isRequiredEmail($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -500,17 +494,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected email, "%s" given.',
+            'Expected email, \'%s\' given.',
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredIpAddress($value)
+    public function isRequiredIpAddress($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -522,17 +516,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected IP address, "%s" given.',
+            'Expected IP address, \'%s\' given.',
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredExistingKey($key, array $values)
+    public function isRequiredExistingKey($key, array $values, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -544,17 +538,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected array to contain key "%s".',
+            'Expected array to contain key \'%s\'.',
             $key
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredExistingValue($value, array $values)
+    public function isRequiredExistingValue($value, array $values, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -566,17 +560,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected array to contain value "%s".',
+            'Expected array to contain value \'%s\'.',
             $value
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredExistingClass($className)
+    public function isRequiredExistingClass($className, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -588,17 +582,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected class name, "%s" given.',
+            'Expected class name, \'%s\' given.',
             $className
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredExistingMethod($object, $methodName)
+    public function isRequiredExistingMethod($object, $methodName, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -610,18 +604,18 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected existing method for class "%s", "%s" given.',
-            is_object($object) ? get_class($object) : sprintf('<NOT AN OBJECT: %s>', gettype($object)),
+            'Expected existing method for class \'%s\', \'%s\' given.',
+            is_object($object) ? get_class($object) : sprintf('[NOT AN OBJECT: %s]', gettype($object)),
             $methodName
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalPositiveInteger($value)
+    public function isOptionalPositiveInteger($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -634,17 +628,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null or positive integer, "%s" given.',
+            'Expected null or positive integer, \'%s\' given.',
             ('integer' === $type) ? 'zero or negative integer' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalZeroPositiveInteger($value)
+    public function isOptionalZeroPositiveInteger($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -657,17 +651,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null, zero or positive integer, "%s" given.',
+            'Expected null, zero or positive integer, \'%s\' given.',
             ('integer' === $type) ? 'negative integer' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalPositiveNumeric($value)
+    public function isOptionalPositiveNumeric($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -680,17 +674,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null or positive numeric, "%s" given.',
+            'Expected null or positive numeric, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'zero or negative numeric' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalZeroPositiveNumeric($value)
+    public function isOptionalZeroPositiveNumeric($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -703,17 +697,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null, zero or positive numeric, "%s" given.',
+            'Expected null, zero or positive numeric, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'negative numeric' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalInteger($value)
+    public function isOptionalInteger($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -725,17 +719,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or integer, "%s" given.',
+            'Expected null or integer, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalIntegerRange($value, $min, $max)
+    public function isOptionalIntegerRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -747,19 +741,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects null or integer in range [%d, %d], "%d" given.',
+            'Expects null or integer in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalNumericRange($value, $min, $max)
+    public function isOptionalNumericRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -771,19 +765,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects null or numeric in range [%d, %d], "%d" given.',
+            'Expects null or numeric in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalBool($value)
+    public function isOptionalBool($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -795,17 +789,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or boolean, "%s" given.',
+            'Expected null or boolean, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalFloat($value)
+    public function isOptionalFloat($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -817,17 +811,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or float, "%s" given.',
+            'Expected null or float, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalScalar($value)
+    public function isOptionalScalar($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -839,17 +833,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or scalar, "%s" given.',
+            'Expected null or scalar, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalArray($value)
+    public function isOptionalArray($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -861,17 +855,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or array, "%s" given.',
+            'Expected null or array, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalArrayNotEmpty($value)
+    public function isOptionalArrayNotEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -884,17 +878,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = 'array' === gettype($value) ? 'empty array' : gettype($value);
         $this->lastError = sprintf(
-            'Expected null or array not empty, "%s" given.',
+            'Expected null or array not empty, \'%s\' given.',
             $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalString($value)
+    public function isOptionalString($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -906,17 +900,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or string, "%s" given.',
+            'Expected null or string, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalStringNotEmpty($value)
+    public function isOptionalStringNotEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -928,17 +922,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or string not empty, "%s" given.',
+            'Expected null or string not empty, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalNotEmpty($value)
+    public function isOptionalNotEmpty($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -950,17 +944,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or not empty, "%s" given.',
+            'Expected null or not empty, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalObject($value)
+    public function isOptionalObject($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -972,17 +966,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or object, "%s" given.',
+            'Expected null or object, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalUrl($value)
+    public function isOptionalUrl($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -994,17 +988,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or URL, "%s" given.',
+            'Expected null or URL, \'%s\' given.',
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalEmail($value)
+    public function isOptionalEmail($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1016,17 +1010,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or email, "%s" given.',
+            'Expected null or email, \'%s\' given.',
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalIpAddress($value)
+    public function isOptionalIpAddress($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1038,17 +1032,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or IP address, "%s" given.',
+            'Expected null or IP address, \'%s\' given.',
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalExistingKey($key, array $values)
+    public function isOptionalExistingKey($key, array $values, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1060,17 +1054,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or array to contain key "%s".',
+            'Expected null or array to contain key \'%s\'.',
             $key
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalExistingValue($value, array $values)
+    public function isOptionalExistingValue($value, array $values, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1082,17 +1076,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or array to contain value "%s".',
+            'Expected null or array to contain value \'%s\'.',
             $value
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveFloat($value)
+    public function isRequiredPositiveFloat($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1105,17 +1099,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected positive float, "%s" given.',
+            'Expected positive float, \'%s\' given.',
             ('double' === $type) ? 'zero or negative float' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveFloat($value)
+    public function isRequiredZeroPositiveFloat($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1128,17 +1122,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected zero or positive float, "%s" given.',
+            'Expected zero or positive float, \'%s\' given.',
             ('double' === $type) ? 'negative float' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredFloatRange($value, $min, $max)
+    public function isRequiredFloatRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1150,19 +1144,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects float in range [%d, %d], "%d" given.',
+            'Expects float in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalPositiveFloat($value)
+    public function isOptionalPositiveFloat($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1175,17 +1169,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null or positive float, "%s" given.',
+            'Expected null or positive float, \'%s\' given.',
             ('double' === $type) ? 'zero or negative float' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalZeroPositiveFloat($value)
+    public function isOptionalZeroPositiveFloat($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1198,17 +1192,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null, zero or positive float, "%s" given.',
+            'Expected null, zero or positive float, \'%s\' given.',
             ('double' === $type) ? 'negative float' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalFloatRange($value, $min, $max)
+    public function isOptionalFloatRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1220,19 +1214,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects null or float in range [%d, %d], "%d" given.',
+            'Expects null or float in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNumber($value)
+    public function isRequiredNumber($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1244,17 +1238,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected number, "%s" given.',
+            'Expected number, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalNumber($value)
+    public function isOptionalNumber($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1266,17 +1260,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or number, "%s" given.',
+            'Expected null or number, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNumeric($value)
+    public function isRequiredNumeric($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1288,17 +1282,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected numeric, "%s" given.',
+            'Expected numeric, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalNumeric($value)
+    public function isOptionalNumeric($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1310,17 +1304,17 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expected null or numeric, "%s" given.',
+            'Expected null or numeric, \'%s\' given.',
             gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveNumber($value)
+    public function isRequiredPositiveNumber($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1333,17 +1327,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected positive number, "%s" given.',
+            'Expected positive number, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveNumber($value)
+    public function isRequiredZeroPositiveNumber($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1356,17 +1350,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected zero or positive number, "%s" given.',
+            'Expected zero or positive number, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'negative number' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNumberRange($value, $min, $max)
+    public function isRequiredNumberRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1378,19 +1372,19 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects number in range [%d, %d], "%d" given.',
+            'Expects number in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalPositiveNumber($value)
+    public function isOptionalPositiveNumber($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1403,17 +1397,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null or positive number, "%s" given.',
+            'Expected null or positive number, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'zero or negative number' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalZeroPositiveNumber($value)
+    public function isOptionalZeroPositiveNumber($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1426,17 +1420,17 @@ class ValidatorService implements ValidatorServiceInterface
         /* Set the error message. */
         $type            = gettype($value);
         $this->lastError = sprintf(
-            'Expected null, zero or positive number, "%s" given.',
+            'Expected null, zero or positive number, \'%s\' given.',
             ('integer' === $type || 'double' === $type) ? 'negative number' : $type
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function isOptionalNumberRange($value, $min, $max)
+    public function isOptionalNumberRange($value, $min, $max, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
@@ -1448,13 +1442,13 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* Set the error message. */
         $this->lastError = sprintf(
-            'Expects null or number in range [%d, %d], "%d" given.',
+            'Expects null or number in range [%d, %d], \'%d\' given.',
             $min,
             $max,
             is_scalar($value) ? $value : gettype($value)
         );
 
-        return $this->validationFailed();
+        return $this->validationFailed($suppressException);
     }
 
     /**
@@ -1466,40 +1460,21 @@ class ValidatorService implements ValidatorServiceInterface
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function enableExceptions()
-    {
-        $this->exceptionEnabled = true;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function disableExceptions()
-    {
-        $this->exceptionEnabled = false;
-
-        return $this;
-    }
-
-    /**
      * Sets the error message and returns false or throws an exception, as needed.
      *
-     * @return boolean
+     * @param bool $suppressException Indicates if an exception should or not be thrown.
+     *
+     * @return bool
      *
      * @throws ValidationException
      */
-    protected function validationFailed()
+    protected function validationFailed($suppressException)
     {
-        /* Throws an exception if they are enabled, or just return false. */
-        if ($this->exceptionEnabled) {
+        if ($suppressException) {
 
-            throw new ValidationException($this->lastError);
+            return false;
         }
 
-        return false;
+        throw new ValidationException($this->lastError);
     }
 }

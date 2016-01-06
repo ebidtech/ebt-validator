@@ -22,7 +22,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredInteger($value)
     {
@@ -34,7 +34,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredPositiveInteger($value)
     {
@@ -46,7 +46,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredZeroPositiveInteger($value)
     {
@@ -56,11 +56,11 @@ abstract class Validator
     /**
      * Required value is integer in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredIntegerRange($value, $min, $max)
     {
@@ -72,7 +72,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalInteger($value)
     {
@@ -90,7 +90,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalPositiveInteger($value)
     {
@@ -108,7 +108,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalZeroPositiveInteger($value)
     {
@@ -124,11 +124,11 @@ abstract class Validator
     /**
      * Optional value is integer in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalIntegerRange($value, $min, $max)
     {
@@ -150,7 +150,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredFloat($value)
     {
@@ -162,7 +162,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredPositiveFloat($value)
     {
@@ -174,7 +174,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredZeroPositiveFloat($value)
     {
@@ -184,11 +184,11 @@ abstract class Validator
     /**
      * Required value is float in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredFloatRange($value, $min, $max)
     {
@@ -200,7 +200,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalFloat($value)
     {
@@ -218,7 +218,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalPositiveFloat($value)
     {
@@ -236,7 +236,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalZeroPositiveFloat($value)
     {
@@ -252,11 +252,11 @@ abstract class Validator
     /**
      * Optional value is float in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalFloatRange($value, $min, $max)
     {
@@ -278,7 +278,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNumber($value)
     {
@@ -290,7 +290,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredPositiveNumber($value)
     {
@@ -302,7 +302,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredZeroPositiveNumber($value)
     {
@@ -312,11 +312,11 @@ abstract class Validator
     /**
      * Required value is number (int or float) in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNumberRange($value, $min, $max)
     {
@@ -328,7 +328,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalNumber($value)
     {
@@ -346,7 +346,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalPositiveNumber($value)
     {
@@ -364,7 +364,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalZeroPositiveNumber($value)
     {
@@ -380,11 +380,11 @@ abstract class Validator
     /**
      * Optional value is number in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalNumberRange($value, $min, $max)
     {
@@ -406,7 +406,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNumeric($value)
     {
@@ -418,7 +418,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredPositiveNumeric($value)
     {
@@ -430,7 +430,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredZeroPositiveNumeric($value)
     {
@@ -440,11 +440,11 @@ abstract class Validator
     /**
      * Required value is numeric in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNumericRange($value, $min, $max)
     {
@@ -456,7 +456,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalNumeric($value)
     {
@@ -474,7 +474,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalPositiveNumeric($value)
     {
@@ -492,7 +492,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalZeroPositiveNumeric($value)
     {
@@ -508,11 +508,11 @@ abstract class Validator
     /**
      * Optional value is numeric in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value Value.
+     * @param int   $min   Lower limit.
+     * @param int   $max   Upper limit.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalNumericRange($value, $min, $max)
     {
@@ -534,7 +534,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredBool($value)
     {
@@ -546,7 +546,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalBool($value)
     {
@@ -568,7 +568,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredScalar($value)
     {
@@ -580,7 +580,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalScalar($value)
     {
@@ -602,7 +602,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredString($value)
     {
@@ -614,7 +614,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredStringNotEmpty($value)
     {
@@ -626,7 +626,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredUrl($value)
     {
@@ -638,7 +638,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredEmail($value)
     {
@@ -650,7 +650,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredIpAddress($value)
     {
@@ -662,7 +662,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalString($value)
     {
@@ -680,7 +680,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalStringNotEmpty($value)
     {
@@ -698,7 +698,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalUrl($value)
     {
@@ -716,7 +716,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalEmail($value)
     {
@@ -734,7 +734,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalIpAddress($value)
     {
@@ -756,7 +756,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredArray($value)
     {
@@ -768,7 +768,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredArrayNotEmpty($value)
     {
@@ -781,7 +781,7 @@ abstract class Validator
      * @param string $key    Key to check.
      * @param array  $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredExistingKey($key, array $values)
     {
@@ -794,7 +794,7 @@ abstract class Validator
      * @param mixed $value  Value to search for.
      * @param array $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredExistingValue($value, array $values)
     {
@@ -806,7 +806,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalArray($value)
     {
@@ -824,7 +824,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalArrayNotEmpty($value)
     {
@@ -843,7 +843,7 @@ abstract class Validator
      * @param string $key    Key to check.
      * @param array  $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalExistingKey($key, array $values)
     {
@@ -862,7 +862,7 @@ abstract class Validator
      * @param mixed $value  Value to search for.
      * @param array $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalExistingValue($value, array $values)
     {
@@ -884,7 +884,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredObject($value)
     {
@@ -896,7 +896,7 @@ abstract class Validator
      *
      * @param string $className Class name to check.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredExistingClass($className)
     {
@@ -909,7 +909,7 @@ abstract class Validator
      * @param object $object     Object from class to be checked.
      * @param string $methodName Name of the method to check for.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredExistingMethod($object, $methodName)
     {
@@ -921,7 +921,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalObject($value)
     {
@@ -943,7 +943,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNotNull($value)
     {
@@ -955,7 +955,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNull($value)
     {
@@ -967,7 +967,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredNotEmpty($value)
     {
@@ -979,7 +979,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isRequiredEmpty($value)
     {
@@ -991,7 +991,7 @@ abstract class Validator
      *
      * @param mixed $value Value.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isOptionalNotEmpty($value)
     {

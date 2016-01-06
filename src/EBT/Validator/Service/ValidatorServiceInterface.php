@@ -22,94 +22,102 @@ interface ValidatorServiceInterface
     /**
      * Required value is integer.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredInteger($value);
+    public function isRequiredInteger($value, $suppressException = true);
 
     /**
      * Required value is a positive integer.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredPositiveInteger($value);
+    public function isRequiredPositiveInteger($value, $suppressException = true);
 
     /**
      * Required value is zero or positive integer.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredZeroPositiveInteger($value);
+    public function isRequiredZeroPositiveInteger($value, $suppressException = true);
 
     /**
      * Required value is integer in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredIntegerRange($value, $min, $max);
+    public function isRequiredIntegerRange($value, $min, $max, $suppressException = true);
 
     /**
      * Optional value is integer.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalInteger($value);
+    public function isOptionalInteger($value, $suppressException = true);
 
     /**
      * Optional value is a positive integer.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalPositiveInteger($value);
+    public function isOptionalPositiveInteger($value, $suppressException = true);
 
     /**
      * Optional value is zero or positive integer.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalZeroPositiveInteger($value);
+    public function isOptionalZeroPositiveInteger($value, $suppressException = true);
 
     /**
      * Optional value is integer in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalIntegerRange($value, $min, $max);
+    public function isOptionalIntegerRange($value, $min, $max, $suppressException = true);
 
     /* --------------------------- */
     /* Float validations           */
@@ -118,94 +126,102 @@ interface ValidatorServiceInterface
     /**
      * Required value is float.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredFloat($value);
+    public function isRequiredFloat($value, $suppressException = true);
 
     /**
      * Required value is a positive float.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredPositiveFloat($value);
+    public function isRequiredPositiveFloat($value, $suppressException = true);
 
     /**
      * Required value is zero or positive float.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredZeroPositiveFloat($value);
+    public function isRequiredZeroPositiveFloat($value, $suppressException = true);
 
     /**
      * Required value is float in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredFloatRange($value, $min, $max);
+    public function isRequiredFloatRange($value, $min, $max, $suppressException = true);
 
     /**
      * Optional value is float.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalFloat($value);
+    public function isOptionalFloat($value, $suppressException = true);
 
     /**
      * Optional value is a positive float.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalPositiveFloat($value);
+    public function isOptionalPositiveFloat($value, $suppressException = true);
 
     /**
      * Optional value is zero or positive float.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalZeroPositiveFloat($value);
+    public function isOptionalZeroPositiveFloat($value, $suppressException = true);
 
     /**
      * Optional value is float in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalFloatRange($value, $min, $max);
+    public function isOptionalFloatRange($value, $min, $max, $suppressException = true);
 
     /* --------------------------- */
     /* Number validations          */
@@ -214,94 +230,102 @@ interface ValidatorServiceInterface
     /**
      * Required value is number (int or float).
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNumber($value);
+    public function isRequiredNumber($value, $suppressException = true);
 
     /**
      * Required value is a positive number (int or float).
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredPositiveNumber($value);
+    public function isRequiredPositiveNumber($value, $suppressException = true);
 
     /**
      * Required value is zero or positive number (int or float).
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredZeroPositiveNumber($value);
+    public function isRequiredZeroPositiveNumber($value, $suppressException = true);
 
     /**
      * Required value is number (int or float) in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNumberRange($value, $min, $max);
+    public function isRequiredNumberRange($value, $min, $max, $suppressException = true);
 
     /**
      * Optional value is number.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalNumber($value);
+    public function isOptionalNumber($value, $suppressException = true);
 
     /**
      * Optional value is a positive number.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalPositiveNumber($value);
+    public function isOptionalPositiveNumber($value, $suppressException = true);
 
     /**
      * Optional value is zero or positive number.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalZeroPositiveNumber($value);
+    public function isOptionalZeroPositiveNumber($value, $suppressException = true);
 
     /**
      * Optional value is number in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalNumberRange($value, $min, $max);
+    public function isOptionalNumberRange($value, $min, $max, $suppressException = true);
 
     /* --------------------------- */
     /* Numeric validations         */
@@ -310,94 +334,102 @@ interface ValidatorServiceInterface
     /**
      * Required value is numeric.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNumeric($value);
+    public function isRequiredNumeric($value, $suppressException = true);
 
     /**
      * Required value is a positive numeric.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredPositiveNumeric($value);
+    public function isRequiredPositiveNumeric($value, $suppressException = true);
 
     /**
      * Required value is zero or positive numeric.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredZeroPositiveNumeric($value);
+    public function isRequiredZeroPositiveNumeric($value, $suppressException = true);
 
     /**
      * Required value is numeric in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNumericRange($value, $min, $max);
+    public function isRequiredNumericRange($value, $min, $max, $suppressException = true);
 
     /**
      * Optional value is numeric.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalNumeric($value);
+    public function isOptionalNumeric($value, $suppressException = true);
 
     /**
      * Optional value is a positive numeric.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalPositiveNumeric($value);
+    public function isOptionalPositiveNumeric($value, $suppressException = true);
 
     /**
      * Optional value is zero or positive numeric.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalZeroPositiveNumeric($value);
+    public function isOptionalZeroPositiveNumeric($value, $suppressException = true);
 
     /**
      * Optional value is numeric in range.
      *
-     * @param mixed   $value Value.
-     * @param integer $min   Lower limit.
-     * @param integer $max   Upper limit.
+     * @param mixed $value             Value.
+     * @param int   $min               Lower limit.
+     * @param int   $max               Upper limit.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalNumericRange($value, $min, $max);
+    public function isOptionalNumericRange($value, $min, $max, $suppressException = true);
 
     /* --------------------------- */
     /* Boolean validations         */
@@ -406,24 +438,26 @@ interface ValidatorServiceInterface
     /**
      * Required value is boolean.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredBool($value);
+    public function isRequiredBool($value, $suppressException = true);
 
     /**
      * Optional value is boolean.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalBool($value);
+    public function isOptionalBool($value, $suppressException = true);
 
     /* --------------------------- */
     /* Scalar validations          */
@@ -432,24 +466,26 @@ interface ValidatorServiceInterface
     /**
      * Require value is scalar.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredScalar($value);
+    public function isRequiredScalar($value, $suppressException = true);
 
     /**
      * Optional value is scalar.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalScalar($value);
+    public function isOptionalScalar($value, $suppressException = true);
 
     /* --------------------------- */
     /* String validations          */
@@ -458,112 +494,122 @@ interface ValidatorServiceInterface
     /**
      * Required value is string.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredString($value);
+    public function isRequiredString($value, $suppressException = true);
 
     /**
      * Required value is string not empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredStringNotEmpty($value);
+    public function isRequiredStringNotEmpty($value, $suppressException = true);
 
     /**
      * Required values in an URL.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredUrl($value);
+    public function isRequiredUrl($value, $suppressException = true);
 
     /**
      * Required value is an email.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredEmail($value);
+    public function isRequiredEmail($value, $suppressException = true);
 
     /**
      * Required value is an IP address.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredIpAddress($value);
+    public function isRequiredIpAddress($value, $suppressException = true);
 
     /**
      * Optional value is string.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalString($value);
+    public function isOptionalString($value, $suppressException = true);
 
     /**
      * Optional value is string not empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalStringNotEmpty($value);
+    public function isOptionalStringNotEmpty($value, $suppressException = true);
 
     /**
      * Optional values in an URL.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalUrl($value);
+    public function isOptionalUrl($value, $suppressException = true);
 
     /**
      * Optional value is an email.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalEmail($value);
+    public function isOptionalEmail($value, $suppressException = true);
 
     /**
      * Optional value is an IP address.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalIpAddress($value);
+    public function isOptionalIpAddress($value, $suppressException = true);
 
     /* --------------------------- */
     /* Array validations           */
@@ -572,24 +618,26 @@ interface ValidatorServiceInterface
     /**
      * Required value is array.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredArray($value);
+    public function isRequiredArray($value, $suppressException = true);
 
     /**
      * Required value is array and not empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredArrayNotEmpty($value);
+    public function isRequiredArrayNotEmpty($value, $suppressException = true);
 
     /**
      * Required key exists.
@@ -597,7 +645,7 @@ interface ValidatorServiceInterface
      * @param string $key    Key to check.
      * @param array  $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
@@ -609,7 +657,7 @@ interface ValidatorServiceInterface
      * @param mixed $value  Value to search for.
      * @param array $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
@@ -618,24 +666,26 @@ interface ValidatorServiceInterface
     /**
      * Optional value is array.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalArray($value);
+    public function isOptionalArray($value, $suppressException = true);
 
     /**
      * Optional value is array and not empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalArrayNotEmpty($value);
+    public function isOptionalArrayNotEmpty($value, $suppressException = true);
 
     /**
      * Optional key exists.
@@ -643,7 +693,7 @@ interface ValidatorServiceInterface
      * @param string $key    Key to check.
      * @param array  $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
@@ -655,7 +705,7 @@ interface ValidatorServiceInterface
      * @param mixed $value  Value to search for.
      * @param array $values Array in which to search.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
@@ -668,20 +718,21 @@ interface ValidatorServiceInterface
     /**
      * Required value is an object.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredObject($value);
+    public function isRequiredObject($value, $suppressException = true);
 
     /**
      * Check if a given class name exists.
      *
      * @param string $className Class name to check.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
@@ -693,7 +744,7 @@ interface ValidatorServiceInterface
      * @param object $object     Object from class to be checked.
      * @param string $methodName Name of the method to check for.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
@@ -702,13 +753,14 @@ interface ValidatorServiceInterface
     /**
      * Optional value is an object.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalObject($value);
+    public function isOptionalObject($value, $suppressException = true);
 
     /* --------------------------- */
     /* Other validations           */
@@ -717,57 +769,62 @@ interface ValidatorServiceInterface
     /**
      * Required value is not null.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNotNull($value);
+    public function isRequiredNotNull($value, $suppressException = true);
 
     /**
      * Required value is null.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNull($value);
+    public function isRequiredNull($value, $suppressException = true);
 
     /**
      * Required value is not empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredNotEmpty($value);
+    public function isRequiredNotEmpty($value, $suppressException = true);
 
     /**
      * Required value is empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredEmpty($value);
+    public function isRequiredEmpty($value, $suppressException = true);
 
     /**
      * Optional value is not empty.
      *
-     * @param mixed $value Value.
+     * @param mixed $value             Value.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalNotEmpty($value);
+    public function isOptionalNotEmpty($value, $suppressException = true);
 
     /* --------------------------- */
     /* Utilities                   */
@@ -779,18 +836,4 @@ interface ValidatorServiceInterface
      * @return string
      */
     public function getLastError();
-
-    /**
-     * Enables exceptions on failed validations.
-     *
-     * @return ValidatorServiceInterface
-     */
-    public function enableExceptions();
-
-    /**
-     * Disables exceptions on failed validations.
-     *
-     * @return ValidatorServiceInterface
-     */
-    public function disableExceptions();
 }
