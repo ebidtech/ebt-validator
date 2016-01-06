@@ -338,7 +338,7 @@ class ValidatorService implements ValidatorServiceInterface
         }
 
         /* Set the error message. */
-        $type            = 'array' === gettype($value) ? 'empty array' : gettype($value);
+        $type            = ('array' === gettype($value)) ? 'empty array' : gettype($value);
         $this->lastError = sprintf(
             'Expected array not empty, \'%s\' given.',
             $type
@@ -383,9 +383,10 @@ class ValidatorService implements ValidatorServiceInterface
         }
 
         /* Set the error message. */
+        $type            = ('string' === gettype($value)) ? 'empty string' : gettype($value);
         $this->lastError = sprintf(
             'Expected string not empty, \'%s\' given.',
-            gettype($value)
+            $type
         );
 
         return $this->validationFailed($suppressException);
@@ -876,7 +877,7 @@ class ValidatorService implements ValidatorServiceInterface
         }
 
         /* Set the error message. */
-        $type            = 'array' === gettype($value) ? 'empty array' : gettype($value);
+        $type            = ('array' === gettype($value)) ? 'empty array' : gettype($value);
         $this->lastError = sprintf(
             'Expected null or array not empty, \'%s\' given.',
             $type
@@ -921,9 +922,10 @@ class ValidatorService implements ValidatorServiceInterface
         }
 
         /* Set the error message. */
+        $type            = ('string' === gettype($value)) ? 'empty string' : gettype($value);
         $this->lastError = sprintf(
             'Expected null or string not empty, \'%s\' given.',
-            gettype($value)
+            $type
         );
 
         return $this->validationFailed($suppressException);
