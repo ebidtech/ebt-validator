@@ -33,13 +33,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNotNull($value, $suppressException = true, $suppressException = true)
+    public function isRequiredNotNull($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredNotNull($value)) {
+
             return true;
         }
 
@@ -55,13 +56,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredNull($value, $suppressException = true, $suppressException = true)
+    public function isRequiredNull($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredNull($value)) {
+
             return true;
         }
 
@@ -77,13 +79,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveInteger($value, $suppressException = true, $suppressException = true)
+    public function isRequiredPositiveInteger($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredPositiveInteger($value)) {
+
             return true;
         }
 
@@ -100,13 +103,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveInteger($value, $suppressException = true, $suppressException = true)
+    public function isRequiredZeroPositiveInteger($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredZeroPositiveInteger($value)) {
+
             return true;
         }
 
@@ -123,13 +127,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredPositiveNumeric($value, $suppressException = true, $suppressException = true)
+    public function isRequiredPositiveNumeric($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredPositiveNumeric($value)) {
+
             return true;
         }
 
@@ -146,13 +151,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredZeroPositiveNumeric($value, $suppressException = true, $suppressException = true)
+    public function isRequiredZeroPositiveNumeric($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredZeroPositiveNumeric($value)) {
+
             return true;
         }
 
@@ -169,13 +175,14 @@ class ValidatorService implements ValidatorServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function isRequiredInteger($value, $suppressException = true, $suppressException = true)
+    public function isRequiredInteger($value, $suppressException = true)
     {
         /* Clear the last error. */
         $this->lastError = null;
 
         /* If valid just return true. */
         if (Validator::isRequiredInteger($value)) {
+
             return true;
         }
 
@@ -198,6 +205,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredIntegerRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -222,6 +230,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredNumericRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -246,6 +255,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredBool($value)) {
+
             return true;
         }
 
@@ -268,6 +278,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredFloat($value)) {
+
             return true;
         }
 
@@ -290,6 +301,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredScalar($value)) {
+
             return true;
         }
 
@@ -312,6 +324,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredArray($value)) {
+
             return true;
         }
 
@@ -334,6 +347,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredArrayNotEmpty($value)) {
+
             return true;
         }
 
@@ -357,6 +371,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredString($value)) {
+
             return true;
         }
 
@@ -379,6 +394,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredStringNotEmpty($value)) {
+
             return true;
         }
 
@@ -402,6 +418,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredNotEmpty($value)) {
+
             return true;
         }
 
@@ -424,6 +441,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredEmpty($value)) {
+
             return true;
         }
 
@@ -446,6 +464,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredObject($value)) {
+
             return true;
         }
 
@@ -468,6 +487,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredUrl($value)) {
+
             return true;
         }
 
@@ -490,6 +510,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredEmail($value)) {
+
             return true;
         }
 
@@ -512,6 +533,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredIpAddress($value)) {
+
             return true;
         }
 
@@ -534,6 +556,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredExistingKey($key, $values)) {
+
             return true;
         }
 
@@ -556,6 +579,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredExistingValue($value, $values)) {
+
             return true;
         }
 
@@ -578,6 +602,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredExistingClass($className)) {
+
             return true;
         }
 
@@ -600,6 +625,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredExistingMethod($object, $methodName)) {
+
             return true;
         }
 
@@ -623,6 +649,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalPositiveInteger($value)) {
+
             return true;
         }
 
@@ -646,6 +673,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalZeroPositiveInteger($value)) {
+
             return true;
         }
 
@@ -669,6 +697,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalPositiveNumeric($value)) {
+
             return true;
         }
 
@@ -692,6 +721,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalZeroPositiveNumeric($value)) {
+
             return true;
         }
 
@@ -715,6 +745,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalInteger($value)) {
+
             return true;
         }
 
@@ -737,6 +768,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalIntegerRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -761,6 +793,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalNumericRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -785,6 +818,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalBool($value)) {
+
             return true;
         }
 
@@ -807,6 +841,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalFloat($value)) {
+
             return true;
         }
 
@@ -829,6 +864,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalScalar($value)) {
+
             return true;
         }
 
@@ -851,6 +887,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalArray($value)) {
+
             return true;
         }
 
@@ -873,6 +910,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalArrayNotEmpty($value)) {
+
             return true;
         }
 
@@ -896,6 +934,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalString($value)) {
+
             return true;
         }
 
@@ -918,6 +957,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalStringNotEmpty($value)) {
+
             return true;
         }
 
@@ -941,6 +981,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalNotEmpty($value)) {
+
             return true;
         }
 
@@ -963,6 +1004,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalObject($value)) {
+
             return true;
         }
 
@@ -985,6 +1027,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalUrl($value)) {
+
             return true;
         }
 
@@ -1007,6 +1050,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalEmail($value)) {
+
             return true;
         }
 
@@ -1029,6 +1073,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalIpAddress($value)) {
+
             return true;
         }
 
@@ -1051,6 +1096,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalExistingKey($key, $values)) {
+
             return true;
         }
 
@@ -1073,6 +1119,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalExistingValue($value, $values)) {
+
             return true;
         }
 
@@ -1095,6 +1142,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredPositiveFloat($value)) {
+
             return true;
         }
 
@@ -1118,6 +1166,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredZeroPositiveFloat($value)) {
+
             return true;
         }
 
@@ -1141,6 +1190,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredFloatRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -1165,6 +1215,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalPositiveFloat($value)) {
+
             return true;
         }
 
@@ -1188,6 +1239,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalZeroPositiveFloat($value)) {
+
             return true;
         }
 
@@ -1211,6 +1263,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalFloatRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -1235,6 +1288,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredNumber($value)) {
+
             return true;
         }
 
@@ -1257,6 +1311,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalNumber($value)) {
+
             return true;
         }
 
@@ -1279,6 +1334,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredNumeric($value)) {
+
             return true;
         }
 
@@ -1301,6 +1357,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalNumeric($value)) {
+
             return true;
         }
 
@@ -1323,6 +1380,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredPositiveNumber($value)) {
+
             return true;
         }
 
@@ -1346,6 +1404,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredZeroPositiveNumber($value)) {
+
             return true;
         }
 
@@ -1369,6 +1428,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isRequiredNumberRange($value, $min, $max)) {
+
             return true;
         }
 
@@ -1393,6 +1453,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalPositiveNumber($value)) {
+
             return true;
         }
 
@@ -1416,6 +1477,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalZeroPositiveNumber($value)) {
+
             return true;
         }
 
@@ -1439,6 +1501,7 @@ class ValidatorService implements ValidatorServiceInterface
 
         /* If valid just return true. */
         if (Validator::isOptionalNumberRange($value, $min, $max)) {
+
             return true;
         }
 

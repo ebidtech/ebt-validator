@@ -642,26 +642,28 @@ interface ValidatorServiceInterface
     /**
      * Required key exists.
      *
-     * @param string $key    Key to check.
-     * @param array  $values Array in which to search.
+     * @param string $key               Key to check.
+     * @param array  $values            Array in which to search.
+     * @param bool   $suppressException Indicates whether the method should return false or thrown an exception.
      *
      * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredExistingKey($key, array $values);
+    public function isRequiredExistingKey($key, array $values, $suppressException = true);
 
     /**
      * Required value exists (in array).
      *
-     * @param mixed $value  Value to search for.
-     * @param array $values Array in which to search.
+     * @param mixed $value             Value to search for.
+     * @param array $values            Array in which to search.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
      * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredExistingValue($value, array $values);
+    public function isRequiredExistingValue($value, array $values, $suppressException = true);
 
     /**
      * Optional value is array.
@@ -690,26 +692,28 @@ interface ValidatorServiceInterface
     /**
      * Optional key exists.
      *
-     * @param string $key    Key to check.
-     * @param array  $values Array in which to search.
+     * @param string $key               Key to check.
+     * @param array  $values            Array in which to search.
+     * @param bool   $suppressException Indicates whether the method should return false or thrown an exception.
      *
      * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalExistingKey($key, array $values);
+    public function isOptionalExistingKey($key, array $values, $suppressException = true);
 
     /**
      * Optional value exists (in array).
      *
-     * @param mixed $value  Value to search for.
-     * @param array $values Array in which to search.
+     * @param mixed $value             Value to search for.
+     * @param array $values            Array in which to search.
+     * @param bool  $suppressException Indicates whether the method should return false or thrown an exception.
      *
      * @return bool
      *
      * @throws ValidationException
      */
-    public function isOptionalExistingValue($value, array $values);
+    public function isOptionalExistingValue($value, array $values, $suppressException = true);
 
     /* --------------------------- */
     /* Object validations          */
@@ -730,25 +734,27 @@ interface ValidatorServiceInterface
     /**
      * Check if a given class name exists.
      *
-     * @param string $className Class name to check.
+     * @param string $className         Class name to check.
+     * @param bool   $suppressException Indicates whether the method should return false or thrown an exception.
      *
      * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredExistingClass($className);
+    public function isRequiredExistingClass($className, $suppressException = true);
 
     /**
      * Check if a given method name exists for a given class.
      *
-     * @param object $object     Object from class to be checked.
-     * @param string $methodName Name of the method to check for.
+     * @param object $object            Object from class to be checked.
+     * @param string $methodName        Name of the method to check for.
+     * @param bool   $suppressException Indicates whether the method should return false or thrown an exception.
      *
      * @return bool
      *
      * @throws ValidationException
      */
-    public function isRequiredExistingMethod($object, $methodName);
+    public function isRequiredExistingMethod($object, $methodName, $suppressException = true);
 
     /**
      * Optional value is an object.
